@@ -1,4 +1,4 @@
-# Helios Drone — Site vitrine
+# Helios — Site vitrine
 
 Site portfolio pour une agence de services drone (immobilier, événementiel,
 inspection, cartographie). HTML/CSS/JS statique, sans dépendance ni build.
