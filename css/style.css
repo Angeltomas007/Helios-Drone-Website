@@ -135,7 +135,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: relative;
   z-index: 2;
   max-width: 780px;
-  padding: 0 24px;
+  padding: 90px 24px 0;
 }
 .hero-kicker {
   font-size: 12px;
