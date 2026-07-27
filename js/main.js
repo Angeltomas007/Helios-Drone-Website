@@ -19,13 +19,64 @@ navLinks.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => navLinks.classList.remove("open"));
 });
 
-// Hero parallax
-const heroBg = document.getElementById("hero-bg");
+// Hero scroll-scrubbed frame sequence
+const heroSection = document.querySelector(".hero");
+const heroCanvas = document.getElementById("hero-canvas");
+const heroCtx = heroCanvas.getContext("2d");
+const HERO_FRAME_COUNT = 72;
+const heroFrames = [];
+let heroFramesReady = false;
+let heroCurrentFrame = 0;
+
+const drawHeroFrame = (index) => {
+  const img = heroFrames[index];
+  if (!img || !img.complete || !img.naturalWidth) return;
+  const cw = heroCanvas.width;
+  const ch = heroCanvas.height;
+  const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+  const dw = img.naturalWidth * scale;
+  const dh = img.naturalHeight * scale;
+  const dx = (cw - dw) / 2;
+  const dy = (ch - dh) / 2;
+  heroCtx.drawImage(img, dx, dy, dw, dh);
+};
+
+const resizeHeroCanvas = () => {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  heroCanvas.width = heroCanvas.clientWidth * dpr;
+  heroCanvas.height = heroCanvas.clientHeight * dpr;
+  drawHeroFrame(heroCurrentFrame);
+};
+
+for (let i = 1; i <= HERO_FRAME_COUNT; i++) {
+  const img = new Image();
+  img.src = `assets/img/hero-frames/frame-${String(i).padStart(3, "0")}.jpg`;
+  heroFrames.push(img);
+}
+heroFrames[0].addEventListener("load", () => { resizeHeroCanvas(); });
+Promise.all(
+  heroFrames.map((img) => img.complete ? Promise.resolve() : new Promise((res) => {
+    img.addEventListener("load", res);
+    img.addEventListener("error", res);
+  }))
+).then(() => { heroFramesReady = true; });
+
+window.addEventListener("resize", resizeHeroCanvas);
+
+let heroScrollTicking = false;
 document.addEventListener("scroll", () => {
-  const y = window.scrollY;
-  if (y < window.innerHeight) {
-    heroBg.style.transform = `translateY(${y * 0.35}px)`;
-  }
+  if (heroScrollTicking) return;
+  heroScrollTicking = true;
+  requestAnimationFrame(() => {
+    heroScrollTicking = false;
+    if (!heroFramesReady) return;
+    const progress = Math.min(Math.max(window.scrollY / heroSection.offsetHeight, 0), 1);
+    const frameIndex = Math.min(HERO_FRAME_COUNT - 1, Math.floor(progress * HERO_FRAME_COUNT));
+    if (frameIndex !== heroCurrentFrame) {
+      heroCurrentFrame = frameIndex;
+      drawHeroFrame(frameIndex);
+    }
+  });
 }, { passive: true });
 
 // Reveal on scroll
