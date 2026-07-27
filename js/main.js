@@ -199,9 +199,43 @@ const chatContent = {
     start: {
       bot: "Bonjour ! Je réponds aux questions de base sur nos tarifs (hors TVA). Que voulez-vous savoir ?",
       options: [
+        { label: "Trouver la formule qu'il me faut", next: "wizard_q1" },
         { label: "Voir les formules", next: "packages" },
         { label: "Options en plus", next: "addons" },
         { label: "Obtenir un devis", next: "quote" },
+      ],
+    },
+    wizard_q1: {
+      bot: "Volontiers ! 4 petites questions. D'abord : quel type de prestation vous intéresse ?",
+      options: [
+        { label: "Immobilier", wizardKey: "type", wizardValue: "Immobilier", next: "wizard_q2" },
+        { label: "Événementiel", wizardKey: "type", wizardValue: "Événementiel", next: "wizard_q2" },
+        { label: "Inspection / Cartographie", wizardKey: "type", wizardValue: "Inspection / Cartographie", next: "wizard_q2" },
+        { label: "Autre chose", wizardKey: "type", wizardValue: "un projet sur mesure", next: "wizard_q2" },
+      ],
+    },
+    wizard_q2: {
+      bot: "Combien de vidéos souhaitez-vous ?",
+      options: [
+        { label: "Une seule vidéo", wizardKey: "videos", wizardValue: "one", next: "wizard_q3" },
+        { label: "Plusieurs formats (longue + courtes)", wizardKey: "videos", wizardValue: "multiple", next: "wizard_q3" },
+        { label: "Je ne sais pas encore", wizardKey: "videos", wizardValue: "unsure", next: "wizard_q3" },
+      ],
+    },
+    wizard_q3: {
+      bot: "Pour quand en avez-vous besoin ?",
+      options: [
+        { label: "Urgent (sous 48h)", wizardKey: "timing", wizardValue: "urgent", next: "wizard_q4" },
+        { label: "Dans le mois", wizardKey: "timing", wizardValue: "month", next: "wizard_q4" },
+        { label: "Flexible", wizardKey: "timing", wizardValue: "flexible", next: "wizard_q4" },
+      ],
+    },
+    wizard_q4: {
+      bot: "Dernière question : une option en plus vous intéresse ?",
+      options: [
+        { label: "Vol FPV immersif", wizardKey: "extra", wizardValue: "fpv", next: "wizard_result" },
+        { label: "Rien de spécial", wizardKey: "extra", wizardValue: "none", next: "wizard_result" },
+        { label: "Je ne sais pas", wizardKey: "extra", wizardValue: "unsure", next: "wizard_result" },
       ],
     },
     packages: {
@@ -235,9 +269,43 @@ const chatContent = {
     start: {
       bot: "Hi! I can answer basic questions about our pricing (excl. VAT). What would you like to know?",
       options: [
+        { label: "Find the right package for me", next: "wizard_q1" },
         { label: "View packages", next: "packages" },
         { label: "Add-on options", next: "addons" },
         { label: "Get a quote", next: "quote" },
+      ],
+    },
+    wizard_q1: {
+      bot: "Happy to help! 4 quick questions. First: what type of shoot are you interested in?",
+      options: [
+        { label: "Real Estate", wizardKey: "type", wizardValue: "Real Estate", next: "wizard_q2" },
+        { label: "Events", wizardKey: "type", wizardValue: "Events", next: "wizard_q2" },
+        { label: "Inspection / Mapping", wizardKey: "type", wizardValue: "Inspection / Mapping", next: "wizard_q2" },
+        { label: "Something else", wizardKey: "type", wizardValue: "a custom project", next: "wizard_q2" },
+      ],
+    },
+    wizard_q2: {
+      bot: "How many videos do you need?",
+      options: [
+        { label: "Just one video", wizardKey: "videos", wizardValue: "one", next: "wizard_q3" },
+        { label: "Several formats (long + short cuts)", wizardKey: "videos", wizardValue: "multiple", next: "wizard_q3" },
+        { label: "Not sure yet", wizardKey: "videos", wizardValue: "unsure", next: "wizard_q3" },
+      ],
+    },
+    wizard_q3: {
+      bot: "When do you need it by?",
+      options: [
+        { label: "Urgent (within 48h)", wizardKey: "timing", wizardValue: "urgent", next: "wizard_q4" },
+        { label: "Within a month", wizardKey: "timing", wizardValue: "month", next: "wizard_q4" },
+        { label: "Flexible", wizardKey: "timing", wizardValue: "flexible", next: "wizard_q4" },
+      ],
+    },
+    wizard_q4: {
+      bot: "Last question: interested in an add-on?",
+      options: [
+        { label: "Immersive FPV flight", wizardKey: "extra", wizardValue: "fpv", next: "wizard_result" },
+        { label: "Nothing extra", wizardKey: "extra", wizardValue: "none", next: "wizard_result" },
+        { label: "Not sure", wizardKey: "extra", wizardValue: "unsure", next: "wizard_result" },
       ],
     },
     packages: {
@@ -275,19 +343,69 @@ const chatMessages = document.getElementById("chat-messages");
 const chatQuickReplies = document.getElementById("chat-quick-replies");
 let chatStarted = false;
 
-const renderChatNode = (key, showUserLabel) => {
-  const node = chatContent[currentLang][key];
-  if (showUserLabel && node.userLabel) {
-    const userBubble = document.createElement("div");
-    userBubble.className = "chat-bubble user";
-    userBubble.textContent = node.userLabel;
-    chatMessages.appendChild(userBubble);
-  }
-  const botBubble = document.createElement("div");
-  botBubble.className = "chat-bubble bot";
-  botBubble.textContent = node.bot;
-  chatMessages.appendChild(botBubble);
+let wizardAnswers = {};
+
+const addChatBubble = (role, text) => {
+  const bubble = document.createElement("div");
+  bubble.className = `chat-bubble ${role}`;
+  bubble.textContent = text;
+  chatMessages.appendChild(bubble);
   chatMessages.scrollTop = chatMessages.scrollHeight;
+};
+
+const buildWizardResult = () => {
+  const a = wizardAnswers;
+  const lines = [];
+  if (currentLang === "en") {
+    let pkg = "Single Edit (€900)";
+    if (a.videos === "multiple") pkg = "Multi-Video Package (from €1,500)";
+    else if (a.videos === "one" && a.timing === "flexible" && a.extra === "none") pkg = "Raw Cut (€500) or Single Edit (€900)";
+    lines.push(`Based on your answers (${a.type || "your project"}), I'd suggest: ${pkg}.`);
+    if (a.extra === "fpv") lines.push("Add the immersive FPV sequence: +€450.");
+    if (a.timing === "urgent") lines.push("For a 48h turnaround, add express delivery: +€200.");
+    lines.push("This is a starting point — send us your project details for an exact quote.");
+  } else {
+    let pkg = "Single Edit (900 €)";
+    if (a.videos === "multiple") pkg = "Multi-Vidéos (à partir de 1 500 €)";
+    else if (a.videos === "one" && a.timing === "flexible" && a.extra === "none") pkg = "Raw Cut (500 €) ou Single Edit (900 €)";
+    lines.push(`D'après vos réponses (${a.type || "votre projet"}), je suggère : ${pkg}.`);
+    if (a.extra === "fpv") lines.push("Ajoutez la séquence FPV immersive : +450 €.");
+    if (a.timing === "urgent") lines.push("Pour une livraison en 48h, ajoutez l'option express : +200 €.");
+    lines.push("C'est une base de départ — envoyez-nous le détail de votre projet pour un devis exact.");
+  }
+  return lines.join("\n\n");
+};
+
+const renderChatNode = (key, showUserLabel, userLabelOverride) => {
+  if (key === "wizard_result") {
+    if (showUserLabel && userLabelOverride) addChatBubble("user", userLabelOverride);
+    addChatBubble("bot", buildWizardResult());
+    chatQuickReplies.innerHTML = "";
+    const resultOptions = currentLang === "en"
+      ? [{ label: "Go to the form", action: "scrollContact" }, { label: "Start over", next: "start" }]
+      : [{ label: "Aller au formulaire", action: "scrollContact" }, { label: "Recommencer", next: "start" }];
+    resultOptions.forEach((opt) => {
+      const btn = document.createElement("button");
+      btn.className = "chat-quick-reply";
+      btn.textContent = opt.label;
+      btn.addEventListener("click", () => {
+        if (opt.action === "scrollContact") {
+          addChatBubble("user", opt.label);
+          chatWidget.classList.remove("open");
+          document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+        wizardAnswers = {};
+        renderChatNode(opt.next, true, opt.label);
+      });
+      chatQuickReplies.appendChild(btn);
+    });
+    return;
+  }
+
+  const node = chatContent[currentLang][key];
+  if (showUserLabel) addChatBubble("user", userLabelOverride || node.userLabel);
+  addChatBubble("bot", node.bot);
 
   chatQuickReplies.innerHTML = "";
   node.options.forEach((opt) => {
@@ -295,16 +413,14 @@ const renderChatNode = (key, showUserLabel) => {
     btn.className = "chat-quick-reply";
     btn.textContent = opt.label;
     btn.addEventListener("click", () => {
+      if (opt.wizardKey) wizardAnswers[opt.wizardKey] = opt.wizardValue;
       if (opt.action === "scrollContact") {
-        const userBubble = document.createElement("div");
-        userBubble.className = "chat-bubble user";
-        userBubble.textContent = opt.label;
-        chatMessages.appendChild(userBubble);
+        addChatBubble("user", opt.label);
         chatWidget.classList.remove("open");
         document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
         return;
       }
-      renderChatNode(opt.next, true);
+      renderChatNode(opt.next, true, opt.label);
     });
     chatQuickReplies.appendChild(btn);
   });
@@ -320,6 +436,7 @@ chatToggle.addEventListener("click", () => {
 
 function resetChatLanguage() {
   if (!chatStarted) return;
+  wizardAnswers = {};
   chatMessages.innerHTML = "";
   chatQuickReplies.innerHTML = "";
   renderChatNode("start", false);
