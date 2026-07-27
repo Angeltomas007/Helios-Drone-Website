@@ -64,3 +64,54 @@ form.addEventListener("submit", (e) => {
   formNote.textContent = "Merci ! Votre demande a bien été notée — nous revenons vers vous rapidement.";
   form.reset();
 });
+
+// Stat counters
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const counters = document.querySelectorAll("[data-count-to]");
+const animateCount = (el) => {
+  const target = parseInt(el.dataset.countTo, 10);
+  const prefix = el.dataset.prefix || "";
+  const suffix = el.dataset.suffix || "";
+  if (reduceMotion) {
+    el.textContent = `${prefix}${target}${suffix}`;
+    return;
+  }
+  const duration = 1200;
+  const start = performance.now();
+  const tick = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = `${prefix}${Math.round(target * eased)}${suffix}`;
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+const countObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        countObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
+counters.forEach((el) => countObserver.observe(el));
+
+// Subtle cursor tilt on cards (pointer devices only)
+if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+  document.querySelectorAll(".service-card, .gallery-item").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      card.style.transition = "transform 0s";
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(700px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transition = "";
+      card.style.transform = "";
+    });
+  });
+}
