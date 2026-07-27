@@ -492,11 +492,17 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .gallery-tag {
   position: absolute;
-  top: 18px; left: 20px;
+  top: 16px; left: 16px;
   z-index: 1;
-  font-size: 11px; letter-spacing: 0.15em;
-  color: var(--on-photo-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  padding: 6px 13px;
+  border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.35);
 }
 .gallery-placeholder {
   position: relative;
