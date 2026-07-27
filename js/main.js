@@ -99,6 +99,93 @@ const countObserver = new IntersectionObserver(
 );
 counters.forEach((el) => countObserver.observe(el));
 
+// Pricing assistant (scripted Q&A, not a real chatbot)
+const chatNodes = {
+  start: {
+    bot: "Bonjour ! Je réponds aux questions de base sur nos tarifs (hors TVA). Que voulez-vous savoir ?",
+    options: [
+      { label: "Voir les formules", next: "packages" },
+      { label: "Options en plus", next: "addons" },
+      { label: "Obtenir un devis", next: "quote" },
+    ],
+  },
+  packages: {
+    userLabel: "Voir les formules",
+    bot: "Nous proposons 3 formules (tarifs HT) :\n\n• Raw Cut — 500 €\nUne vidéo, montage minimal : rushs coupés et assemblés, sans étalonnage. Notre tarif minimum.\n\n• Single Edit — 900 €\nUne vidéo entièrement montée : étalonnage couleur et son inclus.\n\n• Multi-Vidéos — à partir de 1 500 €\nPlusieurs vidéos du même tournage (version longue + formats courts), montées et étalonnées.",
+    options: [
+      { label: "Options en plus", next: "addons" },
+      { label: "Obtenir un devis", next: "quote" },
+      { label: "Recommencer", next: "start" },
+    ],
+  },
+  addons: {
+    userLabel: "Options en plus",
+    bot: "En complément de n'importe quelle formule :\n\n• Séquence FPV immersive — +450 €\n• Montage vidéo supplémentaire (mêmes rushs) — +250 €\n• Journée de tournage additionnelle — +600 €\n• Livraison express 48h — +200 €",
+    options: [
+      { label: "Voir les formules", next: "packages" },
+      { label: "Obtenir un devis", next: "quote" },
+      { label: "Recommencer", next: "start" },
+    ],
+  },
+  quote: {
+    userLabel: "Obtenir un devis",
+    bot: "Le plus simple : décrivez votre projet dans le formulaire de contact, ou écrivez-moi directement sur WhatsApp — je reviens vers vous avec un devis adapté.",
+    options: [
+      { label: "Aller au formulaire", action: "scrollContact" },
+      { label: "Recommencer", next: "start" },
+    ],
+  },
+};
+
+const chatWidget = document.querySelector(".chat-widget");
+const chatToggle = document.getElementById("chat-toggle");
+const chatMessages = document.getElementById("chat-messages");
+const chatQuickReplies = document.getElementById("chat-quick-replies");
+let chatStarted = false;
+
+const renderChatNode = (key, showUserLabel) => {
+  const node = chatNodes[key];
+  if (showUserLabel && node.userLabel) {
+    const userBubble = document.createElement("div");
+    userBubble.className = "chat-bubble user";
+    userBubble.textContent = node.userLabel;
+    chatMessages.appendChild(userBubble);
+  }
+  const botBubble = document.createElement("div");
+  botBubble.className = "chat-bubble bot";
+  botBubble.textContent = node.bot;
+  chatMessages.appendChild(botBubble);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  chatQuickReplies.innerHTML = "";
+  node.options.forEach((opt) => {
+    const btn = document.createElement("button");
+    btn.className = "chat-quick-reply";
+    btn.textContent = opt.label;
+    btn.addEventListener("click", () => {
+      if (opt.action === "scrollContact") {
+        const userBubble = document.createElement("div");
+        userBubble.className = "chat-bubble user";
+        userBubble.textContent = opt.label;
+        chatMessages.appendChild(userBubble);
+        chatWidget.classList.remove("open");
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      renderChatNode(opt.next, true);
+    });
+    chatQuickReplies.appendChild(btn);
+  });
+};
+
+chatToggle.addEventListener("click", () => {
+  chatWidget.classList.toggle("open");
+  if (chatWidget.classList.contains("open") && !chatStarted) {
+    chatStarted = true;
+    renderChatNode("start", false);
+  }
+});
+
 // Subtle cursor tilt on cards (pointer devices only)
 if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
   document.querySelectorAll(".service-card, .gallery-item").forEach((card) => {
