@@ -358,6 +358,79 @@ ul { list-style: none; margin: 0; padding: 0; }
   background: var(--accent);
 }
 
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  margin-bottom: 40px;
+}
+.pricing-card {
+  position: relative;
+  background: var(--off-white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 26px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 16px 32px -20px rgba(0,0,0,0.18);
+  transition: transform .35s var(--ease), box-shadow .35s;
+}
+.pricing-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -18px rgba(0,0,0,0.25); }
+.pricing-card-featured {
+  background: var(--navy-deep);
+  border-color: var(--on-photo-line);
+}
+.pricing-badge {
+  position: absolute;
+  top: -13px; left: 26px;
+  background: var(--accent);
+  color: var(--white);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.pricing-card h3 { font-size: 1.15rem; font-weight: 700; margin: 6px 0 10px; color: var(--ink); }
+.pricing-card-featured h3 { color: var(--on-photo-text); }
+.pricing-price {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+.pricing-card-featured .pricing-price { color: var(--on-photo-accent); }
+.pricing-desc { color: var(--ink-muted); line-height: 1.6; font-size: .92rem; margin: 0; }
+.pricing-card-featured .pricing-desc { color: var(--on-photo-muted); }
+
+.pricing-addons {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+}
+.pricing-addons-title {
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 16px;
+}
+.pricing-addons-list { display: flex; flex-direction: column; gap: 12px; }
+.pricing-addons-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: .95rem;
+}
+.pricing-addons-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.pricing-addons-list li span:last-child { font-weight: 700; color: var(--accent); white-space: nowrap; }
+
 /* Gallery */
 .gallery {
   display: grid;
