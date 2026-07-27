@@ -1,23 +1,24 @@
 :root {
   --white: #ffffff;
-  --off-white: #f4f7fb;
-  --panel: #eef3fa;
-  --ink: #10151f;
-  --ink-muted: #5b6472;
-  --line: rgba(15,44,82,0.12);
+  --off-white: #f5f5f7;
+  --panel: #f5f5f7;
+  --ink: #1d1d1f;
+  --ink-muted: #6e6e73;
+  --line: rgba(0,0,0,0.1);
   --accent: #1f4e82;
   --accent-2: #3f7cc2;
   --accent-soft: #8fc1f2;
-  --scrim: rgba(6,16,32,0.88);
-  --navy: #0d213e;
-  --navy-deep: #061527;
-  --navy-soft: #163a63;
+  --scrim: rgba(0,0,0,0.88);
+  --navy: #0e0e10;
+  --navy-deep: #000000;
+  --navy-soft: #1c1c1e;
   --on-photo-text: #ffffff;
-  --on-photo-muted: rgba(255,255,255,0.82);
-  --on-photo-line: rgba(255,255,255,0.35);
+  --on-photo-muted: rgba(255,255,255,0.78);
+  --on-photo-line: rgba(255,255,255,0.22);
   --on-photo-accent: #9fcaf5;
   --whatsapp: #25d366;
   --whatsapp-deep: #1da851;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   --radius: 14px;
   --ease: cubic-bezier(.16,.84,.44,1);
 }
@@ -196,7 +197,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 780px;
+  max-width: 1080px;
   padding: 90px 24px 0;
   color: var(--on-photo-text);
 }
@@ -207,12 +208,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   margin-bottom: 18px;
 }
 .hero h1 {
-  font-family: "Cinzel", serif;
-  font-size: clamp(2.4rem, 6vw, 4.6rem);
-  line-height: 1.12;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 1.02;
   margin: 0 0 22px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   text-shadow: 0 8px 40px rgba(0,0,0,0.35);
 }
 .hero-sub {
@@ -316,10 +317,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   font-weight: 600;
 }
 .section-head h2, .about-text h2, .contact-text h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  font-weight: 700;
   margin: 0 0 14px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 .section-sub { color: var(--ink-muted); line-height: 1.6; }
 
@@ -743,12 +746,60 @@ ul { list-style: none; margin: 0; padding: 0; }
 /* Reveal animations */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  transform: translateY(42px) scale(.97);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
 }
 .reveal.in-view {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+.services-grid .service-card:nth-child(2) { transition-delay: .08s; }
+.services-grid .service-card:nth-child(3) { transition-delay: .16s; }
+.services-grid .service-card:nth-child(4) { transition-delay: .24s; }
+.gallery .gallery-item:nth-child(2) { transition-delay: .06s; }
+.gallery .gallery-item:nth-child(3) { transition-delay: .12s; }
+.gallery .gallery-item:nth-child(4) { transition-delay: .18s; }
+.gallery .gallery-item:nth-child(5) { transition-delay: .24s; }
+.gallery .gallery-item:nth-child(6) { transition-delay: .3s; }
+.stats .stat:nth-child(2) { transition-delay: .08s; }
+.stats .stat:nth-child(3) { transition-delay: .16s; }
+.stats .stat:nth-child(4) { transition-delay: .24s; }
+
+/* Full-bleed feature section */
+.section-feature {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.section-feature-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+}
+.section-feature-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%);
+}
+.section-feature-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  padding: 0 32px;
+}
+.section-feature h2 {
+  font-family: var(--font-display);
+  color: var(--on-photo-text);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
 }
 
 /* Responsive */
