@@ -1,3 +1,12 @@
+// Prevent the browser from restoring a previous scroll position on
+// reload/back-forward navigation — always start at the top of the page.
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+if (!window.location.hash) {
+  window.scrollTo(0, 0);
+}
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Navbar background on scroll
