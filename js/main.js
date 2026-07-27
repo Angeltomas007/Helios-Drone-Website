@@ -28,6 +28,10 @@ const heroFrames = [];
 let heroFramesReady = false;
 let heroCurrentFrame = 0;
 
+// The yacht sits ~3% right of true center in the source footage; shift the
+// crop window to compensate so it reads as centered on any viewport ratio.
+const HERO_CENTER_OFFSET = 0.03;
+
 const drawHeroFrame = (index) => {
   const img = heroFrames[index];
   if (!img || !img.complete || !img.naturalWidth) return;
@@ -36,7 +40,7 @@ const drawHeroFrame = (index) => {
   const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
   const dw = img.naturalWidth * scale;
   const dh = img.naturalHeight * scale;
-  const dx = (cw - dw) / 2;
+  const dx = (cw - dw) / 2 - dw * HERO_CENTER_OFFSET;
   const dy = (ch - dh) / 2;
   heroCtx.drawImage(img, dx, dy, dw, dh);
 };
