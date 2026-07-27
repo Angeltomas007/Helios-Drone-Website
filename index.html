@@ -239,16 +239,19 @@
         <p data-en="Tell us about your project — property, event, construction site — and we'll get back to you with a tailored proposal.">Décrivez-nous votre projet — bien immobilier, événement, chantier — et on revient vers
           vous avec une proposition adaptée.</p>
         <div class="contact-info">
-          <a href="mailto:ciavarella.angeltomasbs@gmail.com">ciavarella.angeltomasbs@gmail.com</a>
+          <a href="mailto:helios.internationalservices@gmail.com">helios.internationalservices@gmail.com</a>
           <a href="tel:+33619450257">+33 (0)6 19 45 02 57</a>
         </div>
       </div>
       <form class="contact-form reveal" id="contact-form">
+        <input type="hidden" name="access_key" value="2c8ecf54-2ac2-48e6-8aa3-3c01c5222ea6">
+        <input type="hidden" name="subject" value="Nouvelle demande de contact — Site Helios">
+        <input type="hidden" name="from_name" value="Site Helios">
         <div class="form-row">
           <input type="text" name="name" placeholder="Nom" data-en-placeholder="Name" required>
           <input type="email" name="email" placeholder="Email" data-en-placeholder="Email" required>
         </div>
-        <input type="text" name="subject" placeholder="Type de projet (immobilier, événement...)" data-en-placeholder="Project type (real estate, event...)">
+        <input type="text" name="project_type" placeholder="Type de projet (immobilier, événement...)" data-en-placeholder="Project type (real estate, event...)">
         <textarea name="message" rows="5" placeholder="Votre message" data-en-placeholder="Your message" required></textarea>
         <button type="submit" class="btn btn-primary" data-en="Send request">Envoyer la demande</button>
         <p class="form-note" id="form-note"></p>

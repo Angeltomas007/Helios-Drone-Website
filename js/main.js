@@ -151,12 +151,33 @@ lightbox.addEventListener("click", (e) => {
 // Contact form (static placeholder submit — wire to a backend/service later)
 const form = document.getElementById("contact-form");
 const formNote = document.getElementById("form-note");
-form.addEventListener("submit", (e) => {
+const formSubmitBtn = form.querySelector("button[type=submit]");
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  formNote.textContent = currentLang === "en"
-    ? "Thank you! Your request has been received — we'll get back to you shortly."
-    : "Merci ! Votre demande a bien été notée — nous revenons vers vous rapidement.";
-  form.reset();
+  formSubmitBtn.disabled = true;
+  formNote.textContent = currentLang === "en" ? "Sending…" : "Envoi en cours…";
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(form),
+    });
+    const result = await response.json();
+    if (result.success) {
+      formNote.textContent = currentLang === "en"
+        ? "Thank you! Your request has been received — we'll get back to you shortly."
+        : "Merci ! Votre demande a bien été notée — nous revenons vers vous rapidement.";
+      form.reset();
+    } else {
+      throw new Error(result.message || "submit failed");
+    }
+  } catch (err) {
+    formNote.textContent = currentLang === "en"
+      ? "Something went wrong — please email us directly or try again."
+      : "Une erreur est survenue — écrivez-nous directement par email ou réessayez.";
+  } finally {
+    formSubmitBtn.disabled = false;
+  }
 });
 
 // Stat counters
