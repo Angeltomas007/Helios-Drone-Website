@@ -535,9 +535,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: fixed;
   right: 26px; bottom: 26px;
   z-index: 150;
-  width: 58px; height: 58px;
+  width: 62px; height: 62px;
   border-radius: 50%;
-  background: var(--whatsapp);
   color: var(--white);
   display: flex;
   align-items: center;
@@ -549,7 +548,25 @@ ul { list-style: none; margin: 0; padding: 0; }
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 16px 32px -8px rgba(29,168,81,0.65), 0 2px 6px rgba(6,21,39,0.25);
 }
-.whatsapp-fab svg { width: 30px; height: 30px; }
+.whatsapp-fab-avatar {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 8px rgba(6,21,39,0.25);
+}
+.whatsapp-fab-badge {
+  position: absolute;
+  right: -4px; bottom: -4px;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  border: 2.5px solid var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.whatsapp-fab-badge svg { width: 16px; height: 16px; }
 .whatsapp-fab-ring {
   position: absolute;
   inset: 0;
@@ -587,8 +604,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   .whatsapp-fab-ring { animation: none; display: none; }
 }
 @media (max-width: 720px) {
-  .whatsapp-fab { right: 18px; bottom: 18px; width: 52px; height: 52px; }
-  .whatsapp-fab svg { width: 27px; height: 27px; }
+  .whatsapp-fab { right: 18px; bottom: 18px; width: 54px; height: 54px; }
+  .whatsapp-fab-badge { width: 22px; height: 22px; }
+  .whatsapp-fab-badge svg { width: 13px; height: 13px; }
   .whatsapp-fab-label { display: none; }
 }
 
