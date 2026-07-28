@@ -175,15 +175,13 @@ if (filterChips.length) {
   });
 }
 
-// Contact form (only present on pages that include it)
-const form = document.getElementById("contact-form");
-if (form) {
-  const formNote = document.getElementById("form-note");
-  const formSubmitBtn = form.querySelector("button[type=submit]");
+// Web3Forms submission (shared by the main contact form and the quick-quote modal)
+const wireWeb3Form = (form, noteEl, onSuccess) => {
+  const submitBtn = form.querySelector("button[type=submit]");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    formSubmitBtn.disabled = true;
-    formNote.textContent = currentLang === "en" ? "Sending…" : "Envoi en cours…";
+    submitBtn.disabled = true;
+    noteEl.textContent = currentLang === "en" ? "Sending…" : "Envoi en cours…";
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -192,20 +190,60 @@ if (form) {
       });
       const result = await response.json();
       if (result.success) {
-        formNote.textContent = currentLang === "en"
+        noteEl.textContent = currentLang === "en"
           ? "Thank you! Your request has been received — we'll get back to you shortly."
           : "Merci ! Votre demande a bien été notée — nous revenons vers vous rapidement.";
         form.reset();
+        if (onSuccess) onSuccess();
       } else {
         throw new Error(result.message || "submit failed");
       }
     } catch (err) {
-      formNote.textContent = currentLang === "en"
+      noteEl.textContent = currentLang === "en"
         ? "Something went wrong — please email us directly or try again."
         : "Une erreur est survenue — écrivez-nous directement par email ou réessayez.";
     } finally {
-      formSubmitBtn.disabled = false;
+      submitBtn.disabled = false;
     }
+  });
+};
+
+// Contact form (only present on pages that include it)
+const form = document.getElementById("contact-form");
+if (form) {
+  wireWeb3Form(form, document.getElementById("form-note"));
+}
+
+// Quick-quote modal (only present on the homepage)
+const quoteModal = document.getElementById("quote-modal");
+if (quoteModal) {
+  const quoteCta = document.getElementById("quote-cta");
+  const quoteModalClose = document.getElementById("quote-modal-close");
+  const quoteForm = document.getElementById("quote-form");
+
+  const openQuoteModal = () => {
+    quoteModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+  const closeQuoteModal = () => {
+    quoteModal.classList.remove("open");
+    document.body.style.overflow = "";
+  };
+
+  quoteCta.addEventListener("click", (e) => {
+    e.preventDefault();
+    openQuoteModal();
+  });
+  quoteModalClose.addEventListener("click", closeQuoteModal);
+  quoteModal.addEventListener("click", (e) => {
+    if (e.target === quoteModal) closeQuoteModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && quoteModal.classList.contains("open")) closeQuoteModal();
+  });
+
+  wireWeb3Form(quoteForm, document.getElementById("quote-form-note"), () => {
+    setTimeout(closeQuoteModal, 1600);
   });
 }
 

@@ -50,7 +50,7 @@
       Helios capture vos projets sous un angle que personne d'autre ne voit.</p>
     <div class="hero-actions reveal">
       <a href="portfolio.html" class="btn btn-primary" data-en="View portfolio">Voir le portfolio</a>
-      <a href="#contact" class="btn btn-ghost" data-en="Request a quote">Demander un devis</a>
+      <a href="#contact" class="btn btn-ghost" id="quote-cta" data-en="Request a quote">Demander un devis</a>
     </div>
   </div>
   <a href="#services" class="scroll-cue" aria-label="Défiler" data-en-aria="Scroll">
@@ -273,6 +273,28 @@
   </div>
 </div>
 
+<div class="modal-overlay" id="quote-modal">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="quote-modal-close" aria-label="Fermer" data-en-aria="Close">&times;</button>
+    <p class="eyebrow" data-en="Quick request">Demande rapide</p>
+    <h3 data-en="Tell us about your project">Parlez-nous de votre projet</h3>
+    <p class="modal-sub" data-en="A couple of lines is enough — we'll get back to you fast, by email or WhatsApp.">Quelques lignes suffisent — on revient vers vous rapidement, par email ou WhatsApp.</p>
+    <form class="contact-form" id="quote-form">
+      <input type="hidden" name="access_key" value="2c8ecf54-2ac2-48e6-8aa3-3c01c5222ea6">
+      <input type="hidden" name="subject" value="Nouvelle demande de devis rapide — Site Helios">
+      <input type="hidden" name="from_name" value="Site Helios">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Nom" data-en-placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" data-en-placeholder="Email" required>
+      </div>
+      <textarea name="message" rows="3" placeholder="Votre projet en quelques mots : type, lieu, date..." data-en-placeholder="Your project in a few words: type, location, date..." required></textarea>
+      <button type="submit" class="btn btn-primary" data-en="Send">Envoyer</button>
+      <p class="form-note" id="quote-form-note"></p>
+    </form>
+    <a href="https://wa.me/33619450257" target="_blank" rel="noopener" class="modal-whatsapp-link" data-en="Or message us directly on WhatsApp">Ou écrivez-nous directement sur WhatsApp</a>
+  </div>
+</div>
+
 <a href="https://wa.me/33619450257" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Discuter sur WhatsApp" data-en-aria="Chat on WhatsApp">
   <span class="whatsapp-fab-ring"></span>
   <img src="assets/img/contact-avatar.jpg" alt="" class="whatsapp-fab-avatar">
@@ -308,6 +330,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=2"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>
