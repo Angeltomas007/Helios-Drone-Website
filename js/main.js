@@ -6,6 +6,14 @@ if ("scrollRestoration" in history) {
 if (!window.location.hash) {
   window.scrollTo(0, 0);
 }
+// iOS/Safari can restore a page from the back-forward cache (bfcache) without
+// re-running scripts, keeping whatever scroll position it had before — catch
+// that case too.
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted && !window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+});
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
