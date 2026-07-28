@@ -47,6 +47,29 @@ Déposer les fichiers dans `assets/img/`, puis remplacer les vignettes
 `.gallery-item` de la section "Notre flotte" par de vraies photos de
 véhicules (berline, van, etc.).
 
+## Section "Nos destinations"
+
+La section `#destinations` (Paris, Côte d'Azur, Corse, Sardaigne, "et
+ailleurs") utilise pour l'instant des illustrations SVG dessinées à la main
+(pas de vraies photos) : l'environnement de génération de ce site n'a pas
+d'accès réseau vers des banques d'images (Unsplash, etc.), donc impossible
+de télécharger de vraies photos libres de droit ici. Pour les remplacer par
+de vraies photos de villes :
+
+1. Télécharger des photos libres de droit (Unsplash, Pexels, Pixabay).
+2. Les déposer dans `assets/img/` (ex. `paris.jpg`, `cote-azur.jpg`, etc.).
+3. Dans `index.html`, remplacer le contenu de chaque `.destination-visual`
+   par une balise `<img src="assets/img/paris.jpg" alt="Paris">` (ajouter
+   `object-fit: cover; width: 100%; height: 100%;` à `.destination-visual`
+   dans `css/style.css`, ou passer par un `background-image` en CSS).
+
+## Transport héliporté
+
+La carte "Transport héliporté" (section Services) est marquée
+"Bientôt disponible" — c'est une offre à venir, pas encore réservable.
+Quand le service sera prêt, retirer la classe `service-card-soon` et le
+`<span class="badge-soon">` dans `index.html`.
+
 ## Formulaire de contact
 
 Le formulaire est actuellement statique (confirmation locale, pas d'envoi

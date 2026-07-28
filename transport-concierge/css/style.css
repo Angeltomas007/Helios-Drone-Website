@@ -284,6 +284,70 @@ ul { list-style: none; margin: 0; padding: 0; }
   background: var(--accent);
 }
 
+/* Service card - coming soon */
+.service-card-soon {
+  position: relative;
+  border-style: dashed;
+  opacity: 0.9;
+}
+.badge-soon {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+  border: 1px solid rgba(212,175,55,0.4);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+/* Destinations */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.destination-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .4s var(--ease), border-color .4s;
+}
+.destination-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212,175,55,0.35);
+}
+.destination-visual {
+  aspect-ratio: 16 / 10;
+  color: var(--accent-soft);
+  background:
+    linear-gradient(160deg, #12151f, #0a0d13);
+}
+.destination-visual svg { width: 100%; height: 100%; }
+.destination-visual-paris { background: linear-gradient(160deg, #171a24, #0a0d13); }
+.destination-visual-azur { background: linear-gradient(160deg, #10202a, #0a0d13); }
+.destination-visual-corse { background: linear-gradient(160deg, #1a1a14, #0a0d13); }
+.destination-visual-sardaigne { background: linear-gradient(160deg, #0e1c22, #0a0d13); }
+.destination-visual-more { background: linear-gradient(160deg, #16151f, #0a0d13); }
+.destination-tag {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 18px 20px 0;
+}
+.destination-card p {
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.5;
+  padding: 8px 20px 20px;
+  margin: 0;
+}
+
 /* Gallery */
 .gallery {
   display: grid;
