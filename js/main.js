@@ -139,6 +139,49 @@ if (heroCanvas) {
   }, { passive: true });
 }
 
+// Scroll progress bar
+const scrollProgress = document.getElementById("scroll-progress");
+if (scrollProgress) {
+  const updateScrollProgress = () => {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    scrollProgress.style.width = pct + "%";
+  };
+  document.addEventListener("scroll", updateScrollProgress, { passive: true });
+  window.addEventListener("resize", updateScrollProgress);
+  updateScrollProgress();
+}
+
+// Custom cursor (desktop only — pointer:fine, hover-capable)
+const customCursor = document.getElementById("custom-cursor");
+if (customCursor) {
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let renderX = targetX;
+    let renderY = targetY;
+    document.addEventListener("mousemove", (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      customCursor.classList.add("visible");
+    });
+    document.addEventListener("mouseleave", () => customCursor.classList.remove("visible"));
+    document.querySelectorAll("a, button, .filter-chip, .lang-btn, .service-card, .pricing-card, .gallery-item").forEach((el) => {
+      el.addEventListener("mouseenter", () => customCursor.classList.add("cursor-hover"));
+      el.addEventListener("mouseleave", () => customCursor.classList.remove("cursor-hover"));
+    });
+    const renderCursor = () => {
+      renderX += (targetX - renderX) * 0.18;
+      renderY += (targetY - renderY) * 0.18;
+      customCursor.style.transform = `translate(${renderX}px, ${renderY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(renderCursor);
+    };
+    requestAnimationFrame(renderCursor);
+  } else {
+    customCursor.remove();
+  }
+}
+
 // Reveal on scroll
 const revealItems = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver(
