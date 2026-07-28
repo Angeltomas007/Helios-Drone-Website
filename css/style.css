@@ -334,8 +334,11 @@ ul { list-style: none; margin: 0; padding: 0; }
 /* Services */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 22px;
+}
+@media (max-width: 720px) {
+  .services-grid { grid-template-columns: 1fr; }
 }
 .service-card {
   background: var(--off-white);
