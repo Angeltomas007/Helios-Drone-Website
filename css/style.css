@@ -722,6 +722,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   color: var(--on-photo-muted);
   font-size: .85rem;
 }
+.footer-legal-group { text-align: right; }
+.footer-legal-group p { margin: 0; }
+.footer-legal { font-size: .75rem; opacity: .7; margin-top: 2px !important; }
 
 /* Lightbox */
 .lightbox {
