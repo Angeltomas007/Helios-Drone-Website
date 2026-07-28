@@ -12,12 +12,14 @@ HTML/CSS/JS statique, sans dépendance ni build.
 ## Structure
 
 ```
-index.html       page unique (hero, services, flotte, à propos, contact)
-poster.html      carte/affiche autonome à imprimer (QR WhatsApp)
-css/style.css    styles + animations (parallax, reveal au scroll)
-js/main.js       interactions (nav mobile, parallax, lightbox, formulaire)
-assets/img/      photos (à ajouter)
-assets/video/    vidéos (à ajouter)
+index.html         page unique (hero, services, flotte, à propos, contact)
+poster.html         petite affiche à imprimer (QR WhatsApp)
+carte-visite.html   carte de visite recto/verso, format standard 85x55mm
+prospectus.html     prospectus A5 (services, destinations, contact)
+css/style.css       styles + animations (parallax, reveal au scroll)
+js/main.js          interactions (nav mobile, parallax, lightbox, formulaire)
+assets/img/         photos (à ajouter)
+assets/video/       vidéos (à ajouter)
 ```
 
 ## Aperçu en local
@@ -122,6 +124,23 @@ qr.make(fit=True)
 qr.make_image(fill_color='#000000', back_color='#ffffff').save('assets/img/qr-contact.svg')
 "
 ```
+
+## Carte de visite et prospectus
+
+Deux autres documents imprimables, dans le même esprit que `poster.html` :
+
+- **`carte-visite.html`** : une vraie carte de visite, format standard
+  85 × 55 mm, recto (fond bleu marine, logo) et verso (fond blanc, nom,
+  rôle, téléphone, email, QR WhatsApp). Le nom affiché ("Angel Tomas
+  Ciavarella") vient de l'adresse email du contact — à corriger dans le
+  fichier si ce n'est pas le nom/la présentation que tu veux afficher.
+- **`prospectus.html`** : un flyer A5 (148 × 210 mm) plus complet, avec les
+  4 services, la liste des destinations et le contact — à laisser dans un
+  hôtel, une conciergerie, un club nautique, etc.
+
+Les deux s'ouvrent dans un navigateur et s'impriment avec Ctrl/Cmd+P.
+Penser à choisir "Taille réelle" / échelle 100% dans les options
+d'impression pour que les dimensions (mm) restent exactes.
 
 ## Formulaire de contact
 
