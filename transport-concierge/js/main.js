@@ -61,6 +61,7 @@ const form = document.getElementById("contact-form");
 const formNote = document.getElementById("form-note");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  formNote.textContent = "Merci ! Votre demande a bien été notée — nous revenons vers vous rapidement pour organiser votre trajet.";
+  const lang = document.documentElement.lang;
+  formNote.textContent = (translations[lang] || translations.en)["form.successNote"];
   form.reset();
 });

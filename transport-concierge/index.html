@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onda Blu — Concierge de déplacements</title>
-<meta name="description" content="Onda Blu : un seul contact pour organiser tous vos trajets — VTC, taxis, vans, transferts aéroport et longue distance en Méditerranée.">
+<title>Onda Blu — Travel Concierge</title>
+<meta name="description" content="Onda Blu: one contact to arrange all your rides — private driver, taxi, van, airport and long-distance transfers across the Mediterranean.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,15 +19,20 @@
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.5"/><path d="M5 24c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="2.1" fill="none" stroke-linecap="round"/><path d="M5 16.5c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/></svg>
       ONDA BLU
     </a>
-    <button id="nav-toggle" aria-label="Ouvrir le menu">
+    <button id="nav-toggle" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
     <ul id="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#destinations">Destinations</a></li>
-      <li><a href="#flotte">Notre flotte</a></li>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#contact" class="nav-cta">Réserver</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#destinations" data-i18n="nav.destinations">Destinations</a></li>
+      <li><a href="#flotte" data-i18n="nav.fleet">Our fleet</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav.cta">Book now</a></li>
+      <li class="lang-switch">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="it">IT</button>
+      </li>
     </ul>
   </div>
 </nav>
@@ -36,18 +41,18 @@
   <div class="hero-bg" id="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-kicker reveal">CONCIERGERIE DE DÉPLACEMENTS</p>
-    <h1 class="reveal">Vos déplacements,<br>gérés pour vous.</h1>
-    <p class="hero-sub reveal">VTC, taxis, vans — un seul contact pour organiser tous vos trajets,
-      de Paris à la Côte d'Azur, en passant par la Corse et la Sardaigne.</p>
+    <p class="hero-kicker reveal" data-i18n="hero.kicker">TRAVEL CONCIERGE</p>
+    <h1 class="reveal" data-i18n="hero.h1" data-i18n-html="1">Your travel,<br>handled for you.</h1>
+    <p class="hero-sub reveal" data-i18n="hero.sub">Private drivers, taxis, vans — one contact to arrange all your
+      rides, from Saint-Tropez to Sardinia.</p>
     <div class="hero-actions reveal">
-      <a href="#contact" class="btn btn-primary">Réserver un trajet</a>
-      <a href="#services" class="btn btn-ghost">Découvrir nos services</a>
+      <a href="#contact" class="btn btn-primary" data-i18n="hero.btnPrimary">Book a ride</a>
+      <a href="#services" class="btn btn-ghost" data-i18n="hero.btnGhost">Discover our services</a>
     </div>
   </div>
-  <a href="#services" class="scroll-cue" aria-label="Défiler">
+  <a href="#services" class="scroll-cue" aria-label="Scroll">
     <span class="scroll-line"></span>
-    <span class="scroll-text">DÉFILER</span>
+    <span class="scroll-text" data-i18n="hero.scroll">SCROLL</span>
   </a>
 </header>
 
@@ -55,8 +60,8 @@
 
   <section id="services" class="section">
     <div class="section-head reveal">
-      <p class="eyebrow">Ce que nous faisons</p>
-      <h2>Un service de transport pour chaque besoin</h2>
+      <p class="eyebrow" data-i18n="services.eyebrow">What we do</p>
+      <h2 data-i18n="services.h2">A transport service for every need</h2>
     </div>
 
     <div class="services-grid">
@@ -65,13 +70,13 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M6 26l4-12a4 4 0 0 1 4-3h20a4 4 0 0 1 4 3l4 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="26" width="40" height="10" rx="3" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="38" r="3" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="38" r="3" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>VTC &amp; Taxi</h3>
-        <p>Une course simple, un point A et un point B. Contactez-nous et on vous trouve un
-          chauffeur rapidement, où que vous soyez.</p>
+        <h3 data-i18n="services.card1.title">Private Driver &amp; Taxi</h3>
+        <p data-i18n="services.card1.desc">A simple ride, point A to point B. Contact us and we'll find you a
+          driver quickly, wherever you are.</p>
         <ul class="service-list">
-          <li>Prise en charge rapide</li>
-          <li>Disponible jour &amp; nuit</li>
-          <li>Suivi de votre trajet</li>
+          <li data-i18n="services.card1.li1">Fast pickup</li>
+          <li data-i18n="services.card1.li2">Available day &amp; night</li>
+          <li data-i18n="services.card1.li3">Live trip tracking</li>
         </ul>
       </article>
 
@@ -79,13 +84,13 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M4 30V16h30l10 8v6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="30" width="40" height="6" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="40" r="3" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="40" r="3" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>Vans &amp; Groupes</h3>
-        <p>Mariages, séminaires, sorties entre amis : on organise le transport de votre groupe
-          avec un van adapté au nombre de personnes.</p>
+        <h3 data-i18n="services.card2.title">Vans &amp; Groups</h3>
+        <p data-i18n="services.card2.desc">Weddings, seminars, nights out with friends: we organise transport for
+          your group with a van sized to your party.</p>
         <ul class="service-list">
-          <li>Véhicules 6 à 9 places</li>
-          <li>Un seul interlocuteur pour tout le groupe</li>
-          <li>Idéal événements &amp; entreprises</li>
+          <li data-i18n="services.card2.li1">6 to 9-seat vehicles</li>
+          <li data-i18n="services.card2.li2">One point of contact for the whole group</li>
+          <li data-i18n="services.card2.li3">Ideal for events &amp; companies</li>
         </ul>
       </article>
 
@@ -93,13 +98,13 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M24 4l16 10v10c0 11-7 18-16 20-9-2-16-9-16-20V14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Aéroports &amp; Gares</h3>
-        <p>Transferts longue distance avec suivi de vol ou de train : votre chauffeur s'adapte
-          aux retards, vous n'attendez jamais pour rien.</p>
+        <h3 data-i18n="services.card3.title">Airports &amp; Stations</h3>
+        <p data-i18n="services.card3.desc">Long-distance transfers with flight or train tracking: your driver
+          adjusts to delays, so you never wait for nothing.</p>
         <ul class="service-list">
-          <li>Suivi des horaires en temps réel</li>
-          <li>Ponctualité garantie</li>
-          <li>Trajets inter-villes</li>
+          <li data-i18n="services.card3.li1">Real-time schedule tracking</li>
+          <li data-i18n="services.card3.li2">Guaranteed punctuality</li>
+          <li data-i18n="services.card3.li3">Inter-city trips</li>
         </ul>
       </article>
 
@@ -107,27 +112,27 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>Sur mesure</h3>
-        <p>Mise à disposition à l'heure, abonnement mensuel, chauffeur dédié pour une soirée —
-          on construit une solution adaptée à votre rythme.</p>
+        <h3 data-i18n="services.card4.title">Tailor-made</h3>
+        <p data-i18n="services.card4.desc">Hourly hire, monthly subscription, a dedicated driver for the evening
+          — we build a solution that fits your pace.</p>
         <ul class="service-list">
-          <li>Chauffeur pour la soirée (restaurants, boîtes, retour compris)</li>
-          <li>Mise à disposition &amp; abonnement</li>
-          <li>Offres entreprise &amp; tarifs sur devis</li>
+          <li data-i18n="services.card4.li1">Evening driver (restaurants, clubs, return included)</li>
+          <li data-i18n="services.card4.li2">Hourly hire &amp; subscriptions</li>
+          <li data-i18n="services.card4.li3">Corporate offers &amp; custom quotes</li>
         </ul>
       </article>
 
       <article class="service-card service-card-soon reveal">
-        <span class="badge-soon">Bientôt disponible</span>
+        <span class="badge-soon" data-i18n="services.card5.badge">Coming soon</span>
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M22 8v6M14 14h20l6 8H8l6-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="16" y="22" width="16" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 40h40M20 32v4M28 32v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
-        <h3>Transport héliporté</h3>
-        <p>Pour les liaisons express entre la Côte d'Azur, la Corse et la Sardaigne : un
-          service en cours de développement, à venir prochainement.</p>
+        <h3 data-i18n="services.card5.title">Helicopter transfers</h3>
+        <p data-i18n="services.card5.desc">For express connections between the Côte d'Azur, Corsica and Sardinia:
+          currently in development, coming soon.</p>
         <ul class="service-list">
-          <li>Liaisons Côte d'Azur ⇄ Corse ⇄ Sardaigne</li>
-          <li>En développement</li>
+          <li data-i18n="services.card5.li1">Côte d'Azur ⇄ Corsica ⇄ Sardinia links</li>
+          <li data-i18n="services.card5.li2">In development</li>
         </ul>
       </article>
 
@@ -136,45 +141,52 @@
 
   <section id="destinations" class="section section-dark">
     <div class="section-head reveal">
-      <p class="eyebrow">Nos transferts</p>
-      <h2>Nos destinations</h2>
-      <p class="section-sub">Pour l'instant, on se concentre sur la Méditerranée :
-        Saint-Tropez, Monaco, la Sardaigne, la Corse, l'Italie. D'autres régions
-        viendront ensuite.</p>
+      <p class="eyebrow" data-i18n="destinations.eyebrow">Our transfers</p>
+      <h2 data-i18n="destinations.h2">Our destinations</h2>
+      <p class="section-sub" data-i18n="destinations.sub">For now we focus on the Mediterranean: Saint-Tropez,
+        Monaco, Sardinia, Corsica, Italy. Other regions will follow.</p>
+      <p class="section-note reveal" data-i18n="destinations.note">We keep an up-to-date list of pickup points
+        along the coast — here are two of our busiest areas.</p>
     </div>
 
-    <div class="destinations-grid">
+    <div class="maps-grid">
 
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-azur">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><path d="M60 30v55h70l-15-20h-40l-15-35z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M60 30l3 55" stroke="currentColor" stroke-width="2"/><path d="M0 100q40-18 70 0t70 0 60 0" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <div class="map-panel reveal">
+        <p class="map-panel-title" data-i18n="map.sttropez.title">Saint-Tropez &amp; the Gulf</p>
+        <div class="map-panel-body">
+          <svg class="map-bg" viewBox="0 0 300 170" preserveAspectRatio="none"><path d="M0 130Q60 90 120 120T300 110" stroke="currentColor" stroke-width="2" fill="none"/><path d="M0 150Q70 115 140 145T300 135" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/></svg>
+          <div class="map-pins">
+            <span class="map-pin" style="left:18%;top:78%"><i></i><span data-i18n="map.sttropez.pin1">Saint-Tropez Port</span></span>
+            <span class="map-pin" style="left:50%;top:48%"><i></i><span data-i18n="map.sttropez.pin2">Pampelonne Beach</span></span>
+            <span class="map-pin" style="left:38%;top:20%"><i></i><span data-i18n="map.sttropez.pin3">Place des Lices</span></span>
+            <span class="map-pin" style="left:80%;top:60%"><i></i><span data-i18n="map.sttropez.pin4">Ramatuelle</span></span>
+          </div>
         </div>
-        <span class="destination-tag">Saint-Tropez</span>
-        <p>Port, plages et boîtes de nuit mythiques de la Côte d'Azur.</p>
-      </article>
+      </div>
+
+      <div class="map-panel reveal">
+        <p class="map-panel-title" data-i18n="map.sardinia.title">Costa Smeralda, Sardinia</p>
+        <div class="map-panel-body">
+          <svg class="map-bg" viewBox="0 0 300 170" preserveAspectRatio="none"><path d="M0 60Q80 100 160 65T300 90" stroke="currentColor" stroke-width="2" fill="none"/><path d="M0 85Q90 120 170 90T300 115" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/></svg>
+          <div class="map-pins">
+            <span class="map-pin" style="left:22%;top:35%"><i></i><span data-i18n="map.sardinia.pin1">Porto Cervo</span></span>
+            <span class="map-pin" style="left:55%;top:65%"><i></i><span data-i18n="map.sardinia.pin2">Porto Rotondo</span></span>
+            <span class="map-pin" style="left:75%;top:30%"><i></i><span data-i18n="map.sardinia.pin3">Baia Sardinia</span></span>
+            <span class="map-pin" style="left:40%;top:82%"><i></i><span data-i18n="map.sardinia.pin4">Poltu Quatu</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="destinations-grid destinations-grid-compact">
 
       <article class="destination-card reveal">
         <div class="destination-visual destination-visual-monaco">
           <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><circle cx="100" cy="38" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M100 47v40M78 65h44" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M65 95a35 35 0 0 0 70 0" stroke="currentColor" stroke-width="2" fill="none"/></svg>
         </div>
         <span class="destination-tag">Monaco</span>
-        <p>Le rendez-vous incontournable des yachts et du Grand Prix.</p>
-      </article>
-
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-cervo">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><path d="M90 100L98 35h4l8 65" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M92 55h16M92 72h16" stroke="currentColor" stroke-width="2"/><path d="M70 30l20 8M130 30l-20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M75 100h50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <span class="destination-tag">Porto Cervo</span>
-        <p>Le port le plus exclusif de la Costa Smeralda, en Sardaigne.</p>
-      </article>
-
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-rotondo">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><path d="M55 30v55h90l-18-22h-54l-18-33z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M55 30l4 55" stroke="currentColor" stroke-width="2"/><path d="M0 100q50-24 100 0t100 0" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-        </div>
-        <span class="destination-tag">Porto Rotondo</span>
-        <p>Une autre adresse prisée de la Costa Smeralda sarde.</p>
+        <p data-i18n="dest.monaco.desc">The unmissable meeting point for yachts and the Grand Prix.</p>
       </article>
 
       <article class="destination-card reveal">
@@ -182,7 +194,7 @@
           <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><circle cx="100" cy="40" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M100 49v38M80 66h40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M67 95a33 33 0 0 0 66 0" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 100Q50 85 70 95" stroke="currentColor" stroke-width="2" fill="none"/></svg>
         </div>
         <span class="destination-tag">Calvi</span>
-        <p>Marina, citadelle et vie nocturne sur la côte ouest de la Corse.</p>
+        <p data-i18n="dest.calvi.desc">Marina, citadel and nightlife on Corsica's west coast.</p>
       </article>
 
       <article class="destination-card reveal">
@@ -190,24 +202,24 @@
           <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><path d="M85 100L92 40h4l7 60" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M87 58h14M87 74h14" stroke="currentColor" stroke-width="2"/><path d="M65 32l18 6M135 32l-18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M60 100h80" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <span class="destination-tag">Portofino</span>
-        <p>Le petit port emblématique de la Riviera italienne.</p>
+        <p data-i18n="dest.portofino.desc">The iconic little port of the Italian Riviera.</p>
       </article>
 
       <article class="destination-card reveal">
         <div class="destination-visual destination-visual-itineraire">
           <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><circle cx="40" cy="90" r="5" fill="currentColor"/><circle cx="100" cy="50" r="5" fill="currentColor"/><circle cx="160" cy="85" r="5" fill="currentColor"/><path d="M40 90Q70 60 100 50t60 35" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="2 6" stroke-linecap="round"/></svg>
         </div>
-        <span class="destination-tag">Itinéraire personnalisé</span>
-        <p>Une soirée entre plusieurs adresses (restaurant, boîte de nuit...) ?
-          Dites-nous vos envies, on construit l'itinéraire arrêt par arrêt.</p>
+        <span class="destination-tag" data-i18n="dest.itinerary.title">Custom itinerary</span>
+        <p data-i18n="dest.itinerary.desc">A night out across several stops (dinner, a club...)? Tell us what
+          you'd like — we'll plan the route stop by stop.</p>
       </article>
 
       <article class="destination-card reveal">
         <div class="destination-visual destination-visual-more">
           <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet"><circle cx="100" cy="60" r="24" stroke="currentColor" stroke-width="2" fill="none"/><path d="M100 36v48M76 60h48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M92 92l8 14 8-14" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
         </div>
-        <span class="destination-tag">Et ailleurs</span>
-        <p>Un autre port, une autre ville ? Décrivez-nous votre trajet, on l'étudie.</p>
+        <span class="destination-tag" data-i18n="dest.elsewhere.title">Elsewhere</span>
+        <p data-i18n="dest.elsewhere.desc">Another port, another city? Describe your trip and we'll look into it.</p>
       </article>
 
     </div>
@@ -215,48 +227,47 @@
 
   <section id="flotte" class="section">
     <div class="section-head reveal">
-      <p class="eyebrow">Notre flotte</p>
-      <h2>Le bon véhicule pour chaque trajet</h2>
-      <p class="section-sub">Photos de la flotte en cours d'ajout — les visuels de nos
-        véhicules partenaires seront ajoutés ici prochainement.</p>
+      <p class="eyebrow" data-i18n="flotte.eyebrow">Our fleet</p>
+      <h2 data-i18n="flotte.h2">The right vehicle for every trip</h2>
+      <p class="section-sub" data-i18n="flotte.sub">Fleet photos coming soon — real vehicle visuals will be added
+        here shortly.</p>
     </div>
 
     <div class="gallery">
-      <button class="gallery-item reveal" data-index="0"><span class="gallery-tag">Berline</span><span class="gallery-placeholder">Photo à venir</span></button>
-      <button class="gallery-item reveal" data-index="1"><span class="gallery-tag">Van 6-9 places</span><span class="gallery-placeholder">Photo à venir</span></button>
-      <button class="gallery-item reveal" data-index="2"><span class="gallery-tag">Taxi</span><span class="gallery-placeholder">Photo à venir</span></button>
-      <button class="gallery-item reveal" data-index="3"><span class="gallery-tag">Longue distance</span><span class="gallery-placeholder">Photo à venir</span></button>
-      <button class="gallery-item reveal" data-index="4"><span class="gallery-tag">Événementiel</span><span class="gallery-placeholder">Photo à venir</span></button>
-      <button class="gallery-item reveal" data-index="5"><span class="gallery-tag">Entreprise</span><span class="gallery-placeholder">Photo à venir</span></button>
+      <button class="gallery-item reveal" data-index="0"><span class="gallery-tag" data-i18n="flotte.tag1">Sedan</span><span class="gallery-placeholder" data-i18n="flotte.placeholder">Photo coming soon</span></button>
+      <button class="gallery-item reveal" data-index="1"><span class="gallery-tag" data-i18n="flotte.tag2">6-9 seat Van</span><span class="gallery-placeholder" data-i18n="flotte.placeholder">Photo coming soon</span></button>
+      <button class="gallery-item reveal" data-index="2"><span class="gallery-tag" data-i18n="flotte.tag3">Taxi</span><span class="gallery-placeholder" data-i18n="flotte.placeholder">Photo coming soon</span></button>
+      <button class="gallery-item reveal" data-index="3"><span class="gallery-tag" data-i18n="flotte.tag4">Long distance</span><span class="gallery-placeholder" data-i18n="flotte.placeholder">Photo coming soon</span></button>
+      <button class="gallery-item reveal" data-index="4"><span class="gallery-tag" data-i18n="flotte.tag5">Events</span><span class="gallery-placeholder" data-i18n="flotte.placeholder">Photo coming soon</span></button>
+      <button class="gallery-item reveal" data-index="5"><span class="gallery-tag" data-i18n="flotte.tag6">Corporate</span><span class="gallery-placeholder" data-i18n="flotte.placeholder">Photo coming soon</span></button>
     </div>
   </section>
 
   <section id="about" class="section">
     <div class="about-grid">
       <div class="about-text reveal">
-        <p class="eyebrow">Pourquoi Onda Blu</p>
-        <h2>Un seul contact, tous vos trajets</h2>
-        <p>Onda Blu, c'est la simplicité d'un message pour organiser un déplacement, quel que
-          soit le véhicule dont vous avez besoin. Nous coordonnons chauffeurs VTC, taxis et vans
-          partenaires pour que vous n'ayez qu'un seul interlocuteur, du premier message à
-          l'arrivée à destination.</p>
+        <p class="eyebrow" data-i18n="about.eyebrow">Why Onda Blu</p>
+        <h2 data-i18n="about.h2">One contact, all your trips</h2>
+        <p data-i18n="about.p">Onda Blu means the simplicity of a single message to arrange a ride, whatever
+          vehicle you need. We coordinate private drivers, taxis and van partners so you only ever deal with
+          one point of contact, from your first message to arrival.</p>
       </div>
       <div class="stats reveal">
         <div class="stat">
           <span class="stat-num">24/7</span>
-          <span class="stat-label">Disponibilité</span>
+          <span class="stat-label" data-i18n="about.stat1">Availability</span>
         </div>
         <div class="stat">
           <span class="stat-num">~15min</span>
-          <span class="stat-label">Temps d'arrivée moyen</span>
+          <span class="stat-label" data-i18n="about.stat2">Average pickup time</span>
         </div>
         <div class="stat">
           <span class="stat-num">100%</span>
-          <span class="stat-label">Chauffeurs vérifiés</span>
+          <span class="stat-label" data-i18n="about.stat3">Verified drivers</span>
         </div>
         <div class="stat">
           <span class="stat-num">+4</span>
-          <span class="stat-label">Types de véhicules</span>
+          <span class="stat-label" data-i18n="about.stat4">Vehicle types</span>
         </div>
       </div>
     </div>
@@ -265,32 +276,66 @@
   <section id="contact" class="section section-dark">
     <div class="contact-grid">
       <div class="contact-text reveal">
-        <p class="eyebrow">Besoin d'un trajet ?</p>
-        <h2>Contactez-nous, on s'occupe du reste</h2>
-        <p>Décrivez votre trajet — départ, arrivée, date et nombre de personnes — et on revient
-          vers vous avec une proposition adaptée.</p>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Need a ride?</p>
+        <h2 data-i18n="contact.h2">Contact us, we'll handle the rest</h2>
+        <p data-i18n="contact.p">Describe your trip — pickup, drop-off, date and number of people — and we'll
+          get back to you with a tailored offer.</p>
         <div class="contact-info contact-info-row">
           <div class="contact-info-text">
             <a href="mailto:ciavarella.angeltomas@gmail.com">ciavarella.angeltomas@gmail.com</a>
-            <a href="tel:+33619450257">06 19 45 02 57</a>
+            <a href="tel:+33619450257">+33 6 19 45 02 57</a>
           </div>
-          <a class="whatsapp-bubble" href="https://wa.me/33619450257?text=Bonjour%2C%20j%27ai%20besoin%20d%27un%20trajet" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+          <a class="whatsapp-bubble" href="https://wa.me/33619450257?text=Hello%2C%20I%20need%20a%20ride" target="_blank" rel="noopener" data-i18n-aria="contact.whatsappAria" aria-label="Contact us on WhatsApp">
             <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.02 3C9.4 3 4 8.37 4 15c0 2.23.62 4.32 1.68 6.11L4 29l8.1-1.63A11.9 11.9 0 0 0 16.02 27C22.63 27 28 21.63 28 15S22.63 3 16.02 3zm0 21.7c-1.9 0-3.68-.5-5.22-1.4l-.37-.22-4.8.97 1-4.68-.24-.38A9.63 9.63 0 0 1 6.3 15c0-5.36 4.36-9.7 9.72-9.7 5.36 0 9.7 4.34 9.7 9.7 0 5.36-4.34 9.7-9.7 9.7zm5.3-7.25c-.29-.15-1.71-.85-1.98-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.13-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.32-1.44-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17-.01-.37-.01-.56-.01s-.51.07-.78.37c-.27.29-1.02 1-1.02 2.45s1.05 2.84 1.19 3.04c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.11.56-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg>
           </a>
         </div>
       </div>
       <form class="contact-form reveal" id="contact-form">
         <div class="form-row">
-          <input type="text" name="name" placeholder="Nom" required>
-          <input type="tel" name="phone" placeholder="Téléphone" required>
+          <input type="text" name="name" data-i18n-placeholder="form.name" placeholder="Name" required>
+          <input type="tel" name="phone" data-i18n-placeholder="form.phone" placeholder="Phone" required>
         </div>
         <div class="form-row">
-          <input type="text" name="from" placeholder="Adresse de départ">
-          <input type="text" name="to" placeholder="Adresse d'arrivée">
+          <select name="from" required>
+            <option value="" data-i18n="form.fromPlaceholder">Pickup point</option>
+            <optgroup data-i18n-label="map.sttropez.title" label="Saint-Tropez &amp; the Gulf">
+              <option data-i18n="map.sttropez.pin1">Saint-Tropez Port</option>
+              <option data-i18n="map.sttropez.pin2">Pampelonne Beach</option>
+              <option data-i18n="map.sttropez.pin3">Place des Lices</option>
+              <option data-i18n="map.sttropez.pin4">Ramatuelle</option>
+            </optgroup>
+            <optgroup data-i18n-label="map.sardinia.title" label="Costa Smeralda, Sardinia">
+              <option data-i18n="map.sardinia.pin1">Porto Cervo</option>
+              <option data-i18n="map.sardinia.pin2">Porto Rotondo</option>
+              <option data-i18n="map.sardinia.pin3">Baia Sardinia</option>
+              <option data-i18n="map.sardinia.pin4">Poltu Quatu</option>
+            </optgroup>
+            <optgroup data-i18n-label="form.optgroupOther" label="Other">
+              <option data-i18n="form.otherOption">Other (please specify below)</option>
+            </optgroup>
+          </select>
+          <select name="to" required>
+            <option value="" data-i18n="form.toPlaceholder">Drop-off point</option>
+            <optgroup data-i18n-label="map.sttropez.title" label="Saint-Tropez &amp; the Gulf">
+              <option data-i18n="map.sttropez.pin1">Saint-Tropez Port</option>
+              <option data-i18n="map.sttropez.pin2">Pampelonne Beach</option>
+              <option data-i18n="map.sttropez.pin3">Place des Lices</option>
+              <option data-i18n="map.sttropez.pin4">Ramatuelle</option>
+            </optgroup>
+            <optgroup data-i18n-label="map.sardinia.title" label="Costa Smeralda, Sardinia">
+              <option data-i18n="map.sardinia.pin1">Porto Cervo</option>
+              <option data-i18n="map.sardinia.pin2">Porto Rotondo</option>
+              <option data-i18n="map.sardinia.pin3">Baia Sardinia</option>
+              <option data-i18n="map.sardinia.pin4">Poltu Quatu</option>
+            </optgroup>
+            <optgroup data-i18n-label="form.optgroupOther" label="Other">
+              <option data-i18n="form.otherOption">Other (please specify below)</option>
+            </optgroup>
+          </select>
         </div>
-        <input type="text" name="subject" placeholder="Type de trajet (VTC, van, aéroport...)">
-        <textarea name="message" rows="4" placeholder="Date, heure, nombre de personnes, précisions..." required></textarea>
-        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+        <input type="text" name="subject" data-i18n-placeholder="form.subject" placeholder="Trip type (private driver, van, airport...)">
+        <textarea name="message" rows="4" data-i18n-placeholder="form.message" placeholder="Date, time, number of people, details..." required></textarea>
+        <button type="submit" class="btn btn-primary" data-i18n="form.submit">Send request</button>
         <p class="form-note" id="form-note"></p>
       </form>
     </div>
@@ -304,21 +349,22 @@
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.5"/><path d="M5 24c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="2.1" fill="none" stroke-linecap="round"/><path d="M5 16.5c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/></svg>
       ONDA BLU
     </span>
-    <p>&copy; <span id="year"></span> Onda Blu. Tous droits réservés.</p>
+    <p>&copy; <span id="year"></span> <span data-i18n="footer.rights">Onda Blu. All rights reserved.</span></p>
   </div>
 </footer>
 
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">&times;</button>
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
   <div class="lightbox-content">
-    <span class="gallery-placeholder">Photo à venir</span>
+    <span class="gallery-placeholder" data-i18n="flotte.placeholder">Photo coming soon</span>
   </div>
 </div>
 
-<a class="whatsapp-float" href="https://wa.me/33619450257?text=Bonjour%2C%20j%27ai%20besoin%20d%27un%20trajet" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/33619450257?text=Hello%2C%20I%20need%20a%20ride" target="_blank" rel="noopener" data-i18n-aria="contact.whatsappAria" aria-label="Contact us on WhatsApp">
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.02 3C9.4 3 4 8.37 4 15c0 2.23.62 4.32 1.68 6.11L4 29l8.1-1.63A11.9 11.9 0 0 0 16.02 27C22.63 27 28 21.63 28 15S22.63 3 16.02 3zm0 21.7c-1.9 0-3.68-.5-5.22-1.4l-.37-.22-4.8.97 1-4.68-.24-.38A9.63 9.63 0 0 1 6.3 15c0-5.36 4.36-9.7 9.72-9.7 5.36 0 9.7 4.34 9.7 9.7 0 5.36-4.34 9.7-9.7 9.7zm5.3-7.25c-.29-.15-1.71-.85-1.98-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.13-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.32-1.44-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17-.01-.37-.01-.56-.01s-.51.07-.78.37c-.27.29-1.02 1-1.02 2.45s1.05 2.84 1.19 3.04c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.11.56-.08 1.71-.7 1.95-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg>
 </a>
 
+<script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

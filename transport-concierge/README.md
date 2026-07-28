@@ -17,10 +17,49 @@ poster.html         petite affiche à imprimer (QR WhatsApp)
 carte-visite.html   carte de visite recto/verso, format standard 85x55mm
 prospectus.html     prospectus A5 (services, destinations, contact)
 css/style.css       styles + animations (parallax, reveal au scroll)
+js/i18n.js          dictionnaire de traduction (EN/FR/IT) + changement de langue
 js/main.js          interactions (nav mobile, parallax, lightbox, formulaire)
 assets/img/         photos (à ajouter)
 assets/video/       vidéos (à ajouter)
 ```
+
+## Langues (EN / FR / IT)
+
+`index.html` est maintenant multilingue : **anglais par défaut**, avec un
+sélecteur FR / IT dans le menu (en haut à droite, `EN · FR · IT`). Le
+choix de langue est mémorisé (`localStorage`) d'une visite à l'autre.
+
+Tout le texte traduisible porte un attribut `data-i18n="clé"` (ou
+`data-i18n-placeholder` / `data-i18n-aria` / `data-i18n-label` pour les
+attributs). Les traductions sont dans `js/i18n.js`, un objet
+`translations = { en: {...}, fr: {...}, it: {...} }`. Pour changer un
+texte, éditer la valeur correspondante dans les 3 langues (chercher la
+même clé, ex. `"hero.sub"`) plutôt que le HTML directement — le HTML est
+réécrit par le script au chargement.
+
+Pour ajouter une langue : dupliquer un bloc de `translations` (ex. copier
+`en`), ajouter un bouton `<button class="lang-btn" data-lang="es">ES</button>`
+dans `index.html`, traduire toutes les clés.
+
+## Section "Nos destinations"
+
+La section `#destinations` combine :
+- deux **cartes illustrées** (`.map-panel`) avec plusieurs points de prise
+  en charge chacune — Saint-Tropez & le Golfe (port, plage de Pampelonne,
+  Place des Lices, Ramatuelle) et la Costa Smeralda en Sardaigne (Porto
+  Cervo, Porto Rotondo, Baia Sardinia, Poltu Quatu) — pour montrer qu'on a
+  une liste de points précis plutôt qu'une seule adresse par ville ;
+- des cartes plus courtes pour Monaco, Calvi, Portofino, un "Itinéraire
+  personnalisé" (soirée multi-adresses) et "Et ailleurs".
+
+Ce sont des illustrations dessinées à la main (pas une vraie carte
+interactive type Google Maps/Leaflet) : plus sobre, cohérent avec le
+reste du design, et ça fonctionne sans dépendance ni clé API. Les mêmes
+points (Saint-Tropez Port, Pampelonne, Porto Cervo, etc.) alimentent aussi
+les menus déroulants "point de départ / point d'arrivée" du formulaire de
+contact, donc modifier une liste de points dans `js/i18n.js`
+(clés `map.sttropez.pin1..4` / `map.sardinia.pin1..4`) les met à jour aux
+deux endroits.
 
 ## Aperçu en local
 
@@ -61,30 +100,14 @@ Déposer les fichiers dans `assets/img/`, puis remplacer les vignettes
 `.gallery-item` de la section "Notre flotte" par de vraies photos de
 véhicules (berline, van, etc.).
 
-## Section "Nos destinations"
-
-La section `#destinations` présente les transferts vers Saint-Tropez,
-Monaco, Porto Cervo et Porto Rotondo (Sardaigne), Calvi (Corse), Portofino
-(Italie), plus une carte "Itinéraire personnalisé" (soirée sur plusieurs
-adresses : restaurant, boîte de nuit...) et une carte "Et ailleurs". Le
-site reste volontairement concentré sur la Méditerranée pour l'instant —
-d'autres zones pourront être ajoutées plus tard.
-
-Ces cartes utilisent pour l'instant des illustrations SVG dessinées à la
-main (pas de vraies photos) : l'environnement de génération de ce site n'a
-pas d'accès réseau vers des banques d'images (Unsplash, etc.), donc
-impossible de télécharger de vraies photos libres de droit ici. Pour les
-remplacer par de vraies photos :
-
-1. Télécharger des photos libres de droit (Unsplash, Pexels, Pixabay) de
-   chaque port/ville.
-2. Les déposer dans `assets/img/` (ex. `saint-tropez.jpg`, `monaco.jpg`,
-   `porto-cervo.jpg`, etc.).
-3. Dans `index.html`, remplacer le contenu de chaque `.destination-visual`
-   par une balise `<img src="assets/img/saint-tropez.jpg" alt="Saint-Tropez">`
-   (ajouter `object-fit: cover; width: 100%; height: 100%;` à
-   `.destination-visual` dans `css/style.css`, ou passer par un
-   `background-image` en CSS).
+Le site reste volontairement concentré sur la Méditerranée pour l'instant
+— d'autres zones pourront être ajoutées plus tard. Pas de vraies photos
+pour l'instant non plus (voir plus bas pourquoi), seulement des
+illustrations SVG dessinées à la main. Pour remplacer par de vraies
+photos : téléchargez des photos libres de droit, déposez-les dans
+`assets/img/`, puis remplacez le contenu de la `.map-panel-body` ou
+`.destination-visual` concernée par une balise `<img>` (ajouter
+`object-fit: cover; width: 100%; height: 100%;` en CSS).
 
 ## Transport héliporté
 
