@@ -337,6 +337,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .destination-visual-rotondo { background: linear-gradient(160deg, #e9f0f6, #d2e2ee); }
 .destination-visual-calvi { background: linear-gradient(160deg, #eef1e9, #dde3d3); }
 .destination-visual-portofino { background: linear-gradient(160deg, #efeaf5, #ddd3ea); }
+.destination-visual-itineraire { background: linear-gradient(160deg, #eef1f8, #dbe1f0); }
 .destination-visual-more { background: linear-gradient(160deg, #f0f2f5, #dfe4e9); }
 .destination-tag {
   display: block;
@@ -430,25 +431,37 @@ ul { list-style: none; margin: 0; padding: 0; }
 .contact-text p { color: var(--muted); line-height: 1.7; margin-bottom: 26px; }
 .contact-info { display: flex; flex-direction: column; gap: 10px; }
 .contact-info a { color: var(--accent); font-weight: 600; }
-.qr-block {
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37,211,102,0.3);
+}
+.btn-whatsapp svg { width: 20px; height: 20px; }
+.btn-whatsapp:hover { transform: translateY(-2px); opacity: 0.94; }
+
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 150;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-top: 30px;
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(37,211,102,0.4);
+  transition: transform .3s var(--ease);
 }
-.qr-card {
-  flex-shrink: 0;
-  background: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  line-height: 0;
-}
-.qr-card img { display: block; width: 100px; height: 100px; }
-.qr-caption { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: 0; }
+.whatsapp-float svg { width: 30px; height: 30px; }
+.whatsapp-float:hover { transform: scale(1.08); }
 .contact-form {
   display: flex;
   flex-direction: column;
