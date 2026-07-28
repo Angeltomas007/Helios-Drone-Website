@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onda Blu — Prospectus à imprimer</title>
+<meta name="description" content="Prospectus A5 (services, destinations, contact) à imprimer pour Onda Blu.">
+<link rel="icon" href="data:,">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2338;
+    --navy-deep: #071523;
+    --accent: #0f4c75;
+    --accent-soft: #2f7ab5;
+    --muted: #5b6b78;
+    --line: rgba(13,35,56,0.12);
+    --bg-alt: #f2f6f9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #e7ebef;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    padding: 40px 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .sheet {
+    width: 148mm;
+    min-height: 210mm;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(13,35,56,0.16);
+    display: flex;
+    flex-direction: column;
+    color: var(--navy);
+  }
+
+  /* Header */
+  .header {
+    background:
+      radial-gradient(70% 60% at 15% 10%, rgba(90,150,200,0.22), transparent 60%),
+      linear-gradient(160deg, #0b2a44 0%, var(--navy-deep) 100%);
+    color: #fff;
+    padding: 14mm 12mm 12mm;
+    text-align: center;
+  }
+  .header .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5mm;
+    font-family: "Cinzel", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: 14px;
+    margin-bottom: 6mm;
+  }
+  .header .mark { width: 6mm; height: 6mm; }
+  .header h1 {
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 4mm;
+  }
+  .header p {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 100mm;
+    margin-inline: auto;
+  }
+
+  /* Body */
+  .body { padding: 10mm 12mm; flex: 1; }
+  .eyebrow {
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 2mm;
+  }
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 4mm;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin-bottom: 8mm;
+  }
+  .service {
+    border: 1px solid var(--line);
+    border-radius: 2.5mm;
+    padding: 4mm;
+    background: var(--bg-alt);
+  }
+  .service .icon { width: 6mm; height: 6mm; color: var(--accent); margin-bottom: 2mm; }
+  .service h3 { font-size: 11px; margin: 0 0 1.5mm; }
+  .service p { font-size: 9px; line-height: 1.5; color: var(--muted); margin: 0; }
+
+  .destinations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm;
+    margin-bottom: 9mm;
+  }
+  .destinations span {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 1.6mm 4mm;
+  }
+
+  .callout {
+    border: 1px dashed var(--line);
+    border-radius: 2.5mm;
+    padding: 4mm;
+    font-size: 9.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .callout strong { color: var(--navy); }
+
+  /* Footer / contact */
+  .footer {
+    border-top: 1px solid var(--line);
+    background: var(--bg-alt);
+    padding: 8mm 12mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6mm;
+  }
+  .footer .contact-lines { font-size: 10.5px; line-height: 1.7; }
+  .footer .contact-lines strong { display: block; font-size: 12px; margin-bottom: 1mm; }
+  .footer .contact-lines .muted { color: var(--muted); }
+  .footer .qr-block { display: flex; align-items: center; gap: 3mm; }
+  .footer .qr {
+    width: 20mm; height: 20mm;
+    border: 1px solid var(--line);
+    border-radius: 2mm;
+    padding: 1.2mm;
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .footer .qr img { width: 100%; height: 100%; display: block; }
+  .footer .qr-label {
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    max-width: 22mm;
+    line-height: 1.4;
+  }
+
+  .print-hint {
+    max-width: 148mm;
+    margin: 18px auto 0;
+    text-align: center;
+    color: #5b6b78;
+    font-size: 13px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; width: 148mm; min-height: 210mm; }
+    .print-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div>
+    <div class="sheet">
+
+      <div class="header">
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.5"/><path d="M5 24c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="2.1" fill="none" stroke-linecap="round"/><path d="M5 16.5c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/></svg>
+          ONDA BLU
+        </div>
+        <h1>Vos déplacements,<br>gérés pour vous.</h1>
+        <p>VTC, taxis, vans — un seul contact pour organiser tous vos trajets,
+          de Saint-Tropez à la Sardaigne.</p>
+      </div>
+
+      <div class="body">
+        <p class="eyebrow">Ce que nous faisons</p>
+        <h2>Nos services</h2>
+        <div class="services">
+          <div class="service">
+            <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M6 26l4-12a4 4 0 0 1 4-3h20a4 4 0 0 1 4 3l4 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="26" width="40" height="10" rx="3" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="38" r="3" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="38" r="3" stroke="currentColor" stroke-width="2"/></svg>
+            <h3>VTC &amp; Taxi</h3>
+            <p>Course simple, prise en charge rapide, jour et nuit.</p>
+          </div>
+          <div class="service">
+            <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M4 30V16h30l10 8v6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="30" width="40" height="6" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="40" r="3" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="40" r="3" stroke="currentColor" stroke-width="2"/></svg>
+            <h3>Vans &amp; Groupes</h3>
+            <p>Mariages, séminaires, sorties — véhicules 6 à 9 places.</p>
+          </div>
+          <div class="service">
+            <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M24 4l16 10v10c0 11-7 18-16 20-9-2-16-9-16-20V14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Aéroports &amp; Gares</h3>
+            <p>Suivi de vol/train, ponctualité garantie.</p>
+          </div>
+          <div class="service">
+            <svg class="icon" viewBox="0 0 48 48" fill="none"><path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2"/></svg>
+            <h3>Sur mesure</h3>
+            <p>Chauffeur pour la soirée, mise à disposition, abonnement.</p>
+          </div>
+        </div>
+
+        <p class="eyebrow">Nos transferts</p>
+        <h2>Destinations</h2>
+        <div class="destinations">
+          <span>Saint-Tropez</span>
+          <span>Monaco</span>
+          <span>Porto Cervo</span>
+          <span>Porto Rotondo</span>
+          <span>Calvi</span>
+          <span>Portofino</span>
+        </div>
+
+        <div class="callout">
+          <strong>Itinéraire personnalisé</strong> — une soirée entre plusieurs adresses
+          (restaurant, boîte de nuit...) ? Dites-nous vos envies, on construit
+          l'itinéraire arrêt par arrêt.
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="contact-lines">
+          <strong>Onda Blu</strong>
+          06 19 45 02 57<br>
+          <span class="muted">ciavarella.angeltomas@gmail.com</span>
+        </div>
+        <div class="qr-block">
+          <span class="qr-label">Scannez pour WhatsApp</span>
+          <div class="qr">
+            <img src="assets/img/qr-contact.svg" alt="QR code WhatsApp Onda Blu">
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="print-hint">Ctrl/Cmd+P pour imprimer — format A5 (148 × 210&nbsp;mm). Choisir "Taille réelle" / 100% dans les options d'impression.</p>
+  </div>
+
+</body>
+</html>

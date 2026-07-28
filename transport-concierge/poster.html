@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onda Blu — Carte à imprimer</title>
+<meta name="description" content="Affiche/carte à imprimer avec QR code WhatsApp pour Onda Blu.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2338;
+    --accent: #0f4c75;
+    --muted: #5b6b78;
+    --line: rgba(13,35,56,0.12);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #e7ebef;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .card {
+    width: 400px;
+    max-width: 100%;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(13,35,56,0.14);
+    padding: 48px 36px;
+    text-align: center;
+    color: var(--navy);
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .logo-mark { width: 22px; height: 22px; color: var(--accent); }
+  .tagline {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 34px;
+  }
+  h1 {
+    font-family: "Cinzel", serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    line-height: 1.35;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 30px;
+  }
+  .qr {
+    display: inline-block;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 22px;
+  }
+  .qr img { display: block; width: 180px; height: 180px; }
+  .scan-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 26px;
+  }
+  .contact {
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .contact strong { color: var(--navy); }
+  .print-hint {
+    max-width: 400px;
+    margin: 18px auto 0;
+    text-align: center;
+    color: #5b6b78;
+    font-size: 13px;
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .card { box-shadow: none; border: none; width: 100%; }
+    .print-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div>
+    <div class="card">
+      <div class="logo">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.5"/><path d="M5 24c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="2.1" fill="none" stroke-linecap="round"/><path d="M5 16.5c3.3-4.3 6.7-4.3 10 0s6.7 4.3 10 0 6.7-4.3 10 0" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.5"/></svg>
+        ONDA BLU
+      </div>
+      <p class="tagline">Conciergerie de déplacements</p>
+
+      <h1>Besoin d'un trajet ?<br>Scannez, on s'occupe du reste.</h1>
+      <p class="sub">VTC, taxi, van — sur le port ou ailleurs, je réserve
+        votre trajet en quelques minutes.</p>
+
+      <div class="qr">
+        <img src="assets/img/qr-contact.svg" alt="QR code WhatsApp Onda Blu" width="180" height="180">
+      </div>
+      <p class="scan-label">Scannez pour m'écrire sur WhatsApp</p>
+
+      <div class="contact">
+        <strong>Onda Blu</strong><br>
+        06 19 45 02 57<br>
+        ciavarella.angeltomas@gmail.com
+      </div>
+    </div>
+    <p class="print-hint">Utilisez Ctrl/Cmd+P pour imprimer cette carte (format carte/flyer).</p>
+  </div>
+
+</body>
+</html>
