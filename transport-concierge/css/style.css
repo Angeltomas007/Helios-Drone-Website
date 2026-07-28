@@ -326,10 +326,12 @@ ul { list-style: none; margin: 0; padding: 0; }
     linear-gradient(160deg, #12151f, #0a0d13);
 }
 .destination-visual svg { width: 100%; height: 100%; }
-.destination-visual-paris { background: linear-gradient(160deg, #171a24, #0a0d13); }
 .destination-visual-azur { background: linear-gradient(160deg, #10202a, #0a0d13); }
-.destination-visual-corse { background: linear-gradient(160deg, #1a1a14, #0a0d13); }
-.destination-visual-sardaigne { background: linear-gradient(160deg, #0e1c22, #0a0d13); }
+.destination-visual-monaco { background: linear-gradient(160deg, #1a1710, #0a0d13); }
+.destination-visual-cervo { background: linear-gradient(160deg, #0e1c22, #0a0d13); }
+.destination-visual-rotondo { background: linear-gradient(160deg, #131c28, #0a0d13); }
+.destination-visual-calvi { background: linear-gradient(160deg, #1a1a14, #0a0d13); }
+.destination-visual-portofino { background: linear-gradient(160deg, #171226, #0a0d13); }
 .destination-visual-more { background: linear-gradient(160deg, #16151f, #0a0d13); }
 .destination-tag {
   display: block;
@@ -421,6 +423,23 @@ ul { list-style: none; margin: 0; padding: 0; }
 .contact-text p { color: var(--muted); line-height: 1.7; margin-bottom: 26px; }
 .contact-info { display: flex; flex-direction: column; gap: 10px; }
 .contact-info a { color: var(--accent-soft); font-weight: 600; }
+.qr-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.qr-card {
+  flex-shrink: 0;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  line-height: 0;
+}
+.qr-card img { display: block; width: 100px; height: 100px; }
+.qr-caption { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: 0; }
 .contact-form {
   display: flex;
   flex-direction: column;
