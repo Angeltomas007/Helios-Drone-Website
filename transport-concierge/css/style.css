@@ -269,12 +269,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: -0.01em;
 }
 .section-sub { color: var(--muted); line-height: 1.6; }
-.section-note {
-  color: var(--accent);
-  font-size: .9rem;
-  font-weight: 600;
-  margin-top: 14px;
-}
 
 /* Services */
 .services-grid {
@@ -395,53 +389,28 @@ ul { list-style: none; margin: 0; padding: 0; }
   display: block;
 }
 
-.destinations-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
+.dest-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.destinations-grid-compact {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-.destination-card {
+.dest-chip {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
   box-shadow: var(--shadow);
-  transition: transform .4s var(--ease), border-color .4s, box-shadow .4s;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
 }
-.destination-card:hover {
-  transform: translateY(-6px);
+.dest-chip:hover {
+  transform: translateY(-2px);
   border-color: rgba(15,76,117,0.3);
   box-shadow: var(--shadow-hover);
-}
-.destination-visual {
-  aspect-ratio: 16 / 10;
   color: var(--accent);
-  background: linear-gradient(160deg, #eef4f9, #dbe7f0);
-}
-.destination-visual svg { width: 100%; height: 100%; }
-.destination-visual-monaco { background: linear-gradient(160deg, #eef1f5, #d7dee6); }
-.destination-visual-calvi { background: linear-gradient(160deg, #eef1e9, #dde3d3); }
-.destination-visual-portofino { background: linear-gradient(160deg, #efeaf5, #ddd3ea); }
-.destination-visual-itineraire { background: linear-gradient(160deg, #eef1f8, #dbe1f0); }
-.destination-visual-more { background: linear-gradient(160deg, #f0f2f5, #dfe4e9); }
-.destination-tag {
-  display: block;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
-  padding: 18px 20px 0;
-}
-.destination-card p {
-  color: var(--muted);
-  font-size: .88rem;
-  line-height: 1.5;
-  padding: 8px 20px 20px;
-  margin: 0;
 }
 
 /* Gallery */

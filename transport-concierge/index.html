@@ -143,10 +143,8 @@
     <div class="section-head reveal">
       <p class="eyebrow" data-i18n="destinations.eyebrow">Our transfers</p>
       <h2 data-i18n="destinations.h2">Our destinations</h2>
-      <p class="section-sub" data-i18n="destinations.sub">For now we focus on the Mediterranean: Saint-Tropez,
-        Monaco, Sardinia, Corsica, Italy. Other regions will follow.</p>
-      <p class="section-note reveal" data-i18n="destinations.note">We keep an up-to-date list of pickup points
-        along the coast — here are two of our busiest areas.</p>
+      <p class="section-sub" data-i18n="destinations.sub">Mediterranean only, for now — tap a pickup point or a
+        destination below to start your request.</p>
     </div>
 
     <div class="maps-grid">
@@ -179,49 +177,12 @@
 
     </div>
 
-    <div class="destinations-grid destinations-grid-compact">
-
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-monaco">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><circle cx="100" cy="38" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M100 47v40M78 65h44" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M65 95a35 35 0 0 0 70 0" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-        </div>
-        <span class="destination-tag">Monaco</span>
-        <p data-i18n="dest.monaco.desc">The unmissable meeting point for yachts and the Grand Prix.</p>
-      </article>
-
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-calvi">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><circle cx="100" cy="40" r="9" stroke="currentColor" stroke-width="2" fill="none"/><path d="M100 49v38M80 66h40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M67 95a33 33 0 0 0 66 0" stroke="currentColor" stroke-width="2" fill="none"/><path d="M30 100Q50 85 70 95" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-        </div>
-        <span class="destination-tag">Calvi</span>
-        <p data-i18n="dest.calvi.desc">Marina, citadel and nightlife on Corsica's west coast.</p>
-      </article>
-
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-portofino">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><path d="M85 100L92 40h4l7 60" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M87 58h14M87 74h14" stroke="currentColor" stroke-width="2"/><path d="M65 32l18 6M135 32l-18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M60 100h80" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <span class="destination-tag">Portofino</span>
-        <p data-i18n="dest.portofino.desc">The iconic little port of the Italian Riviera.</p>
-      </article>
-
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-itineraire">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMax slice"><circle cx="40" cy="90" r="5" fill="currentColor"/><circle cx="100" cy="50" r="5" fill="currentColor"/><circle cx="160" cy="85" r="5" fill="currentColor"/><path d="M40 90Q70 60 100 50t60 35" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="2 6" stroke-linecap="round"/></svg>
-        </div>
-        <span class="destination-tag" data-i18n="dest.itinerary.title">Custom itinerary</span>
-        <p data-i18n="dest.itinerary.desc">A night out across several stops (dinner, a club...)? Tell us what
-          you'd like — we'll plan the route stop by stop.</p>
-      </article>
-
-      <article class="destination-card reveal">
-        <div class="destination-visual destination-visual-more">
-          <svg viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet"><circle cx="100" cy="60" r="24" stroke="currentColor" stroke-width="2" fill="none"/><path d="M100 36v48M76 60h48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M92 92l8 14 8-14" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
-        </div>
-        <span class="destination-tag" data-i18n="dest.elsewhere.title">Elsewhere</span>
-        <p data-i18n="dest.elsewhere.desc">Another port, another city? Describe your trip and we'll look into it.</p>
-      </article>
-
+    <div class="dest-chips">
+      <button type="button" class="dest-chip" data-select-to="Monaco">Monaco</button>
+      <button type="button" class="dest-chip" data-select-to="Calvi">Calvi</button>
+      <button type="button" class="dest-chip" data-select-to="Portofino">Portofino</button>
+      <button type="button" class="dest-chip" data-fill-subject data-i18n="dest.itinerary.title">Custom itinerary</button>
+      <button type="button" class="dest-chip" data-fill-subject data-i18n="dest.elsewhere.title">Elsewhere</button>
     </div>
   </section>
 
@@ -310,6 +271,11 @@
               <option data-i18n="map.sardinia.pin3">Baia Sardinia</option>
               <option data-i18n="map.sardinia.pin4">Poltu Quatu</option>
             </optgroup>
+            <optgroup data-i18n-label="form.optgroupOtherPorts" label="Other ports">
+              <option>Monaco</option>
+              <option>Calvi</option>
+              <option>Portofino</option>
+            </optgroup>
             <optgroup data-i18n-label="form.optgroupOther" label="Other">
               <option data-i18n="form.otherOption">Other (please specify below)</option>
             </optgroup>
@@ -327,6 +293,11 @@
               <option data-i18n="map.sardinia.pin2">Porto Rotondo</option>
               <option data-i18n="map.sardinia.pin3">Baia Sardinia</option>
               <option data-i18n="map.sardinia.pin4">Poltu Quatu</option>
+            </optgroup>
+            <optgroup data-i18n-label="form.optgroupOtherPorts" label="Other ports">
+              <option>Monaco</option>
+              <option>Calvi</option>
+              <option>Portofino</option>
             </optgroup>
             <optgroup data-i18n-label="form.optgroupOther" label="Other">
               <option data-i18n="form.otherOption">Other (please specify below)</option>

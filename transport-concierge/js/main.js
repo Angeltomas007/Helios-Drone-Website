@@ -56,6 +56,20 @@ lightbox.addEventListener("click", (e) => {
   if (e.target === lightbox) lightbox.classList.remove("open");
 });
 
+// Destination chips: jump to the booking form and pre-fill it
+const toSelect = document.querySelector('select[name="to"]');
+const subjectInput = document.querySelector('input[name="subject"]');
+document.querySelectorAll(".dest-chip").forEach((chip) => {
+  chip.addEventListener("click", () => {
+    if (chip.dataset.selectTo && toSelect) {
+      toSelect.value = chip.dataset.selectTo;
+    } else if (chip.hasAttribute("data-fill-subject") && subjectInput) {
+      subjectInput.value = chip.textContent.trim();
+    }
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  });
+});
+
 // Contact form (static placeholder submit — wire to a backend/service later)
 const form = document.getElementById("contact-form");
 const formNote = document.getElementById("form-note");
