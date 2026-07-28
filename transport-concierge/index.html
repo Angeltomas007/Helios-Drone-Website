@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concierge — Gestion de vos déplacements</title>
+<meta name="description" content="Concierge : un seul contact pour organiser tous vos trajets — VTC, taxis, vans, transferts aéroport et longue distance.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 8v6M20 26v6M8 20h6M26 20h6"/></g></svg>
+      CONCIERGE
+    </a>
+    <button id="nav-toggle" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#flotte">Notre flotte</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#contact" class="nav-cta">Réserver</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-kicker reveal">CONCIERGERIE DE DÉPLACEMENTS</p>
+    <h1 class="reveal">Vos déplacements,<br>gérés pour vous.</h1>
+    <p class="hero-sub reveal">VTC, taxis, vans — un seul contact pour organiser tous vos trajets,
+      à toute heure et pour toute occasion.</p>
+    <div class="hero-actions reveal">
+      <a href="#contact" class="btn btn-primary">Réserver un trajet</a>
+      <a href="#services" class="btn btn-ghost">Découvrir nos services</a>
+    </div>
+  </div>
+  <a href="#services" class="scroll-cue" aria-label="Défiler">
+    <span class="scroll-line"></span>
+    <span class="scroll-text">DÉFILER</span>
+  </a>
+</header>
+
+<main>
+
+  <section id="services" class="section">
+    <div class="section-head reveal">
+      <p class="eyebrow">Ce que nous faisons</p>
+      <h2>Un service de transport pour chaque besoin</h2>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M6 26l4-12a4 4 0 0 1 4-3h20a4 4 0 0 1 4 3l4 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="26" width="40" height="10" rx="3" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="38" r="3" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="38" r="3" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>VTC &amp; Taxi</h3>
+        <p>Une course simple, un point A et un point B. Contactez-nous et on vous trouve un
+          chauffeur rapidement, où que vous soyez.</p>
+        <ul class="service-list">
+          <li>Prise en charge rapide</li>
+          <li>Disponible jour &amp; nuit</li>
+          <li>Suivi de votre trajet</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M4 30V16h30l10 8v6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="4" y="30" width="40" height="6" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="13" cy="40" r="3" stroke="currentColor" stroke-width="2"/><circle cx="35" cy="40" r="3" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Vans &amp; Groupes</h3>
+        <p>Mariages, séminaires, sorties entre amis : on organise le transport de votre groupe
+          avec un van adapté au nombre de personnes.</p>
+        <ul class="service-list">
+          <li>Véhicules 6 à 9 places</li>
+          <li>Un seul interlocuteur pour tout le groupe</li>
+          <li>Idéal événements &amp; entreprises</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4l16 10v10c0 11-7 18-16 20-9-2-16-9-16-20V14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Aéroports &amp; Gares</h3>
+        <p>Transferts longue distance avec suivi de vol ou de train : votre chauffeur s'adapte
+          aux retards, vous n'attendez jamais pour rien.</p>
+        <ul class="service-list">
+          <li>Suivi des horaires en temps réel</li>
+          <li>Ponctualité garantie</li>
+          <li>Trajets inter-villes</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Sur mesure</h3>
+        <p>Mise à disposition à l'heure, abonnement mensuel, besoins récurrents pour une
+          entreprise — on construit une solution adaptée à votre rythme.</p>
+        <ul class="service-list">
+          <li>Mise à disposition &amp; abonnement</li>
+          <li>Offres entreprise</li>
+          <li>Tarifs sur devis</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="flotte" class="section section-dark">
+    <div class="section-head reveal">
+      <p class="eyebrow">Notre flotte</p>
+      <h2>Le bon véhicule pour chaque trajet</h2>
+      <p class="section-sub">Photos de la flotte en cours d'ajout — les visuels de nos
+        véhicules partenaires seront ajoutés ici prochainement.</p>
+    </div>
+
+    <div class="gallery">
+      <button class="gallery-item reveal" data-index="0"><span class="gallery-tag">Berline</span><span class="gallery-placeholder">Photo à venir</span></button>
+      <button class="gallery-item reveal" data-index="1"><span class="gallery-tag">Van 6-9 places</span><span class="gallery-placeholder">Photo à venir</span></button>
+      <button class="gallery-item reveal" data-index="2"><span class="gallery-tag">Taxi</span><span class="gallery-placeholder">Photo à venir</span></button>
+      <button class="gallery-item reveal" data-index="3"><span class="gallery-tag">Longue distance</span><span class="gallery-placeholder">Photo à venir</span></button>
+      <button class="gallery-item reveal" data-index="4"><span class="gallery-tag">Événementiel</span><span class="gallery-placeholder">Photo à venir</span></button>
+      <button class="gallery-item reveal" data-index="5"><span class="gallery-tag">Entreprise</span><span class="gallery-placeholder">Photo à venir</span></button>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="eyebrow">Pourquoi Concierge</p>
+        <h2>Un seul contact, tous vos trajets</h2>
+        <p>Concierge, c'est la simplicité d'un message pour organiser un déplacement, quel que
+          soit le véhicule dont vous avez besoin. Nous coordonnons chauffeurs VTC, taxis et vans
+          partenaires pour que vous n'ayez qu'un seul interlocuteur, du premier message à
+          l'arrivée à destination.</p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat">
+          <span class="stat-num">24/7</span>
+          <span class="stat-label">Disponibilité</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">~15min</span>
+          <span class="stat-label">Temps d'arrivée moyen</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Chauffeurs vérifiés</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">+4</span>
+          <span class="stat-label">Types de véhicules</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-dark">
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <p class="eyebrow">Besoin d'un trajet ?</p>
+        <h2>Contactez-nous, on s'occupe du reste</h2>
+        <p>Décrivez votre trajet — départ, arrivée, date et nombre de personnes — et on revient
+          vers vous avec une proposition adaptée.</p>
+        <div class="contact-info">
+          <a href="mailto:ciavarella.angeltomas@gmail.com">ciavarella.angeltomas@gmail.com</a>
+          <a href="tel:+33619450257">06 19 45 02 57</a>
+        </div>
+      </div>
+      <form class="contact-form reveal" id="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Nom" required>
+          <input type="tel" name="phone" placeholder="Téléphone" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="from" placeholder="Adresse de départ">
+          <input type="text" name="to" placeholder="Adresse d'arrivée">
+        </div>
+        <input type="text" name="subject" placeholder="Type de trajet (VTC, van, aéroport...)">
+        <textarea name="message" rows="4" placeholder="Date, heure, nombre de personnes, précisions..." required></textarea>
+        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+        <p class="form-note" id="form-note"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 8v6M20 26v6M8 20h6M26 20h6"/></g></svg>
+      CONCIERGE
+    </span>
+    <p>&copy; <span id="year"></span> Concierge. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">&times;</button>
+  <div class="lightbox-content">
+    <span class="gallery-placeholder">Photo à venir</span>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
