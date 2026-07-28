@@ -1,9 +1,11 @@
-# Concierge — Site vitrine
+# Onda Blu — Site vitrine
 
-Site vitrine pour un service de conciergerie de déplacements (VTC, taxis,
-vans, transferts aéroport/gare, sur mesure). Repris du même gabarit visuel
-que le site Helios (dossier parent), mais reconstruit comme un site à part
-entière, indépendant, dans son propre dossier.
+Site vitrine pour Onda Blu, un service de conciergerie de déplacements
+(VTC, taxis, vans, transferts aéroport/gare, sur mesure) pour la clientèle
+yacht de Méditerranée. Repris du même gabarit visuel que le site Helios
+(dossier parent), mais reconstruit comme un site à part entière,
+indépendant, dans son propre dossier — palette blanc/bleu marine, sobre
+et élégante.
 
 HTML/CSS/JS statique, sans dépendance ni build.
 
@@ -27,8 +29,14 @@ python3 -m http.server 8000
 
 ## Ajouter une vidéo dans le hero
 
-Déposer le fichier vidéo dans `assets/video/`, puis dans `index.html`
-remplacer le `<div class="hero-bg" id="hero-bg"></div>` par :
+Le hero est prêt à recevoir une vidéo (dégradé bleu marine en attendant) —
+mais **je n'ai pas pu ajouter la vraie vidéo de yacht demandée** : l'environnement
+où ce site est généré n'a pas d'accès réseau vers des sites de vidéos/photos
+(Unsplash, banques de vidéos, etc. — toutes les tentatives échouent avec une
+erreur 403), et je n'ai pas de fichier vidéo fourni dans le dépôt à réutiliser.
+
+Pour l'ajouter toi-même : déposer le fichier vidéo dans `assets/video/`, puis
+dans `index.html` remplacer le `<div class="hero-bg" id="hero-bg"></div>` par :
 
 ```html
 <video class="hero-bg" id="hero-bg" autoplay muted loop playsinline poster="assets/img/hero-poster.jpg">
@@ -39,7 +47,10 @@ remplacer le `<div class="hero-bg" id="hero-bg"></div>` par :
 Le CSS (`.hero-bg`) s'applique déjà en `position: absolute; inset: 0`, donc
 une vidéo prend directement la place du dégradé de fond — il suffit d'ajouter
 `object-fit: cover; width: 100%; height: 100%;` à `.hero-bg` dans
-`css/style.css` une fois la balise `<video>` en place.
+`css/style.css` une fois la balise `<video>` en place. Le dégradé bleu marine
+actuel de `.hero-bg`/`.hero-overlay` est calibré pour qu'un texte blanc reste
+lisible par-dessus une vidéo sombre (mer, port, yacht au crépuscule) — garder
+une vidéo plutôt sombre ou assombrie pour la lisibilité du texte.
 
 ## Ajouter des photos de la flotte
 
@@ -116,10 +127,11 @@ Ce dossier est volontairement autonome (ses propres `css/`, `js/`,
 
 ## Personnalisation rapide
 
-- **Nom de marque** : "CONCIERGE" est un nom provisoire — à remplacer dans
-  `index.html` (logo, `<title>`) et éventuellement le nom de domaine.
-- **Couleurs** : accent doré (`--accent` dans `css/style.css`) au lieu de
-  l'orange Helios, pour différencier visuellement les deux sites tout en
-  gardant la même mise en page.
+- **Nom de marque** : "Onda Blu" (logo, `<title>`, footer) — à ajuster si tu
+  changes d'avis, et à répercuter sur le nom de domaine le cas échéant.
+- **Couleurs** : palette blanc/bleu marine (`--bg`, `--text`, `--accent`
+  dans `css/style.css`) — sobre et élégante façon yacht, à l'opposé du thème
+  sombre du site Helios.
 - **Contact** : email et téléphone repris du site Helios — à mettre à jour
-  si un numéro/adresse dédié à ce service doit être utilisé.
+  si un numéro/adresse dédié à ce service doit être utilisé (et à
+  régénérer le QR code du contact si le numéro change, voir plus haut).
