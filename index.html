@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Helios — Vision aérienne</title>
-<meta name="description" content="Helios : prises de vue aériennes pour l'immobilier, l'événementiel, l'inspection et la cartographie.">
-<link rel="icon" href="data:,">
+<title id="page-title">Helios — Vision aérienne</title>
+<meta id="page-description" name="description" content="Helios : prises de vue aériennes pour l'immobilier, l'événementiel, l'inspection et la cartographie.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -18,37 +18,44 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#home" class="logo">
-      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 3v6M20 31v6M3 20h6M31 20h6M8.5 8.5l4.2 4.2M27.3 27.3l4.2 4.2M8.5 31.5l4.2-4.2M27.3 12.7l4.2-4.2"/></g></svg>
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.3"/><path d="M14 12v16M26 12v16M14 20h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 20h-3M32 20h-3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
       HELIOS
     </a>
-    <button id="nav-toggle" aria-label="Ouvrir le menu">
+    <button id="nav-toggle" aria-label="Ouvrir le menu" data-en-aria="Open menu">
       <span></span><span></span><span></span>
     </button>
     <ul id="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#contact" class="nav-cta">Contact</a></li>
+      <li><a href="#services" data-en="Services">Services</a></li>
+      <li><a href="#tarifs" data-en="Pricing">Tarifs</a></li>
+      <li><a href="portfolio.html" data-en="Portfolio">Portfolio</a></li>
+      <li><a href="#about" data-en="About">À propos</a></li>
+      <li><a href="#contact" class="nav-cta" data-en="Contact">Contact</a></li>
+      <li class="lang-switch" role="group" aria-label="Choisir la langue / Choose language">
+        <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </li>
     </ul>
   </div>
 </nav>
 
 <header id="home" class="hero">
-  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-bg" id="hero-bg">
+    <canvas class="hero-canvas" id="hero-canvas"></canvas>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-kicker reveal">AGENCE DE PRISES DE VUE AÉRIENNES</p>
-    <h1 class="reveal">Votre vision,<br>filmée d'en haut.</h1>
-    <p class="hero-sub reveal">Immobilier, événementiel, inspection, cartographie —
+    <p class="hero-kicker reveal" data-en="AERIAL FILMING AGENCY">AGENCE DE PRISES DE VUE AÉRIENNES</p>
+    <h1 class="reveal" data-en="Your vision,<br>filmed from above.">Votre vision,<br>filmée d'en haut.</h1>
+    <p class="hero-sub reveal" data-en="Real estate, events, inspection, mapping — Helios captures your projects from an angle no one else can see.">Immobilier, événementiel, inspection, cartographie —
       Helios capture vos projets sous un angle que personne d'autre ne voit.</p>
     <div class="hero-actions reveal">
-      <a href="#portfolio" class="btn btn-primary">Voir le portfolio</a>
-      <a href="#contact" class="btn btn-ghost">Demander un devis</a>
+      <a href="portfolio.html" class="btn btn-primary" data-en="View portfolio">Voir le portfolio</a>
+      <a href="#contact" class="btn btn-ghost" id="quote-cta" data-en="Request a quote">Demander un devis</a>
     </div>
   </div>
-  <a href="#services" class="scroll-cue" aria-label="Défiler">
+  <a href="#services" class="scroll-cue" aria-label="Défiler" data-en-aria="Scroll">
     <span class="scroll-line"></span>
-    <span class="scroll-text">DÉFILER</span>
+    <span class="scroll-text" data-en="SCROLL">DÉFILER</span>
   </a>
 </header>
 
@@ -56,8 +63,8 @@
 
   <section id="services" class="section">
     <div class="section-head reveal">
-      <p class="eyebrow">Ce que nous faisons</p>
-      <h2>Des services taillés pour chaque terrain</h2>
+      <p class="eyebrow" data-en="What we do">Ce que nous faisons</p>
+      <h2 data-en="Services built for every terrain">Des services taillés pour chaque terrain</h2>
     </div>
 
     <div class="services-grid">
@@ -66,13 +73,13 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M6 40h36M12 40V22l12-10 12 10v18M20 40V28h8v12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Immobilier</h3>
-        <p>Photos et vidéos aériennes qui subliment un bien : plans larges, survols de propriété,
+        <h3 data-en="Real Estate">Immobilier</h3>
+        <p data-en="Aerial photos and videos that showcase a property: wide shots, property flyovers, immersive walkthroughs to sell faster and higher.">Photos et vidéos aériennes qui subliment un bien : plans larges, survols de propriété,
           visites immersives pour vendre plus vite et plus haut.</p>
         <ul class="service-list">
-          <li>Survols de biens &amp; domaines</li>
-          <li>Visuels pour annonces &amp; plaquettes</li>
-          <li>Vidéos de présentation courtes</li>
+          <li data-en="Property &amp; estate flyovers">Survols de biens &amp; domaines</li>
+          <li data-en="Visuals for listings &amp; brochures">Visuels pour annonces &amp; plaquettes</li>
+          <li data-en="Short presentation videos">Vidéos de présentation courtes</li>
         </ul>
       </article>
 
@@ -80,13 +87,13 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M24 6l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>Événementiel</h3>
-        <p>Mariages, concerts, festivals, événements sportifs et corporate : des angles impossibles
+        <h3 data-en="Events">Événementiel</h3>
+        <p data-en="Weddings, concerts, festivals, sporting and corporate events: angles impossible to get from the ground, for memories that last.">Mariages, concerts, festivals, événements sportifs et corporate : des angles impossibles
           à obtenir au sol, pour des souvenirs qui marquent.</p>
         <ul class="service-list">
-          <li>Couverture live &amp; montage</li>
-          <li>Plans d'ensemble &amp; ambiance</li>
-          <li>Livraison rapide des rushs</li>
+          <li data-en="Live coverage &amp; editing">Couverture live &amp; montage</li>
+          <li data-en="Wide shots &amp; atmosphere">Plans d'ensemble &amp; ambiance</li>
+          <li data-en="Fast footage delivery">Livraison rapide des rushs</li>
         </ul>
       </article>
 
@@ -94,13 +101,13 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M8 12h32v24H8z" stroke="currentColor" stroke-width="2"/><path d="M8 20h32M18 12v24" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>Inspection &amp; Cartographie</h3>
-        <p>Toitures, chantiers, terrains agricoles, sites industriels : inspection sans risque
+        <h3 data-en="Inspection &amp; Mapping">Inspection &amp; Cartographie</h3>
+        <p data-en="Roofs, construction sites, farmland, industrial sites: risk-free inspection and precise aerial mapping surveys.">Toitures, chantiers, terrains agricoles, sites industriels : inspection sans risque
           et relevés cartographiques précis par voie aérienne.</p>
         <ul class="service-list">
-          <li>Inspection de toitures &amp; façades</li>
-          <li>Suivi de chantier</li>
-          <li>Cartographie &amp; orthophotos</li>
+          <li data-en="Roof &amp; façade inspection">Inspection de toitures &amp; façades</li>
+          <li data-en="Construction site monitoring">Suivi de chantier</li>
+          <li data-en="Mapping &amp; orthophotos">Cartographie &amp; orthophotos</li>
         </ul>
       </article>
 
@@ -108,63 +115,113 @@
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>Sur mesure</h3>
-        <p>Un projet atypique ? Publicité, agriculture de précision, sécurité de site — on étudie
+        <h3 data-en="Custom">Sur mesure</h3>
+        <p data-en="An unusual project? Advertising, precision agriculture, site security — we'll work out together the best way to film or measure it.">Un projet atypique ? Publicité, agriculture de précision, sécurité de site — on étudie
           ensemble la meilleure façon de le filmer ou de le mesurer.</p>
         <ul class="service-list">
-          <li>Étude de faisabilité gratuite</li>
-          <li>Pilotage télépiloté certifié</li>
-          <li>Livrables adaptés à votre usage</li>
+          <li data-en="Free feasibility study">Étude de faisabilité gratuite</li>
+          <li data-en="Certified drone piloting">Pilotage télépiloté certifié</li>
+          <li data-en="Deliverables tailored to your needs">Livrables adaptés à votre usage</li>
         </ul>
       </article>
 
     </div>
   </section>
 
-  <section id="portfolio" class="section section-dark">
+  <section id="approche" class="section section-dark">
+    <div class="approach-block reveal">
+      <p class="eyebrow" data-en="Our approach">Notre approche</p>
+      <h2 data-en="We don't sell you a package. We build your strategy.">On ne vous vend pas un forfait. On construit votre stratégie.</h2>
+      <p class="section-sub" data-en="Every project has its own goals — sell faster, make an impression, secure a site, map a plot of land. We start by talking through what you're trying to achieve, then recommend the service that actually fits your project, not the most expensive one.">Chaque projet a ses propres objectifs — vendre plus vite, marquer les esprits,
+        sécuriser un chantier, cartographier un terrain. On échange d'abord sur ce que vous
+        cherchez à obtenir, puis on vous recommande la prestation la plus pertinente pour
+        votre projet, pas la plus chère.</p>
+      <a href="#contact" class="btn btn-primary" data-en="Discuss my project">Discuter de mon projet</a>
+    </div>
+  </section>
+
+  <section id="tarifs" class="section">
     <div class="section-head reveal">
-      <p class="eyebrow">Nos réalisations</p>
-      <h2>Un aperçu depuis le ciel</h2>
-      <p class="section-sub">Portfolio en cours de constitution — les visuels et vidéos de vos
-        projets seront ajoutés ici prochainement.</p>
+      <p class="eyebrow" data-en="Pricing">Tarifs</p>
+      <h2 data-en="Clear packages, no surprises">Des formules claires, sans surprise</h2>
+      <p class="section-sub" data-en="Prices excl. VAT. Cost depends on filming and editing time — from a simple raw cut to a fully delivered multi-video package.">Tarifs HT. Le prix dépend du temps de tournage et de montage —
+        d'un simple rush brut à un pack multi-vidéos entièrement livré.</p>
     </div>
 
-    <div class="gallery">
-      <button class="gallery-item reveal" data-index="0"><span class="gallery-tag">Immobilier</span><span class="gallery-placeholder">Vidéo à venir</span></button>
-      <button class="gallery-item reveal" data-index="1"><span class="gallery-tag">Événementiel</span><span class="gallery-placeholder">Vidéo à venir</span></button>
-      <button class="gallery-item reveal" data-index="2"><span class="gallery-tag">Inspection</span><span class="gallery-placeholder">Vidéo à venir</span></button>
-      <button class="gallery-item reveal" data-index="3"><span class="gallery-tag">Cartographie</span><span class="gallery-placeholder">Vidéo à venir</span></button>
-      <button class="gallery-item reveal" data-index="4"><span class="gallery-tag">Immobilier</span><span class="gallery-placeholder">Vidéo à venir</span></button>
-      <button class="gallery-item reveal" data-index="5"><span class="gallery-tag">Événementiel</span><span class="gallery-placeholder">Vidéo à venir</span></button>
+    <div class="pricing-grid">
+      <article class="pricing-card reveal">
+        <h3>Raw Cut</h3>
+        <p class="pricing-price">500&nbsp;€</p>
+        <p class="pricing-desc" data-en="One video, minimal editing: footage trimmed and assembled, no color grading. Our minimum rate.">Une vidéo, montage minimal : rushs coupés et assemblés, sans
+          étalonnage. Notre tarif minimum.</p>
+      </article>
+
+      <article class="pricing-card pricing-card-featured reveal">
+        <span class="pricing-badge" data-en="Most popular">Le plus demandé</span>
+        <h3>Single Edit</h3>
+        <p class="pricing-price">900&nbsp;€</p>
+        <p class="pricing-desc" data-en="One fully edited video: color grading and sound included.">Une vidéo entièrement montée : étalonnage couleur et son
+          inclus.</p>
+      </article>
+
+      <article class="pricing-card reveal">
+        <h3 data-en="Multi-Video Package">Multi-Vidéos</h3>
+        <p class="pricing-price">Dès 1&nbsp;500&nbsp;€</p>
+        <p class="pricing-desc" data-en="Several videos from the same shoot (long version + short cuts), edited and color graded.">Plusieurs vidéos du même tournage (version longue + formats
+          courts), montées et étalonnées.</p>
+      </article>
+    </div>
+
+    <div class="pricing-addons reveal">
+      <p class="pricing-addons-title" data-en="Add-on options">Options à la carte</p>
+      <ul class="pricing-addons-list">
+        <li><span data-en="Immersive FPV sequence">Séquence FPV immersive</span><span>+450&nbsp;€</span></li>
+        <li><span data-en="Extra video edit (same footage)">Montage vidéo supplémentaire (mêmes rushs)</span><span>+250&nbsp;€</span></li>
+        <li><span data-en="Additional filming day">Journée de tournage additionnelle</span><span>+600&nbsp;€</span></li>
+        <li><span data-en="48h express delivery">Livraison express 48h</span><span>+200&nbsp;€</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-feature">
+    <div class="section-feature-bg" style="background-image:url('https://images.pexels.com/photos/6942523/pexels-photo-6942523.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920')"></div>
+    <div class="section-feature-overlay"></div>
+    <div class="section-feature-content reveal">
+      <h2 data-en="Every project deserves to be seen differently.">Chaque projet mérite d'être vu autrement.</h2>
+      <a href="portfolio.html" class="btn btn-primary" data-en="View portfolio" style="margin-top:28px;">Voir le portfolio</a>
     </div>
   </section>
 
   <section id="about" class="section">
-    <div class="about-grid">
+    <div class="about-bio">
+      <div class="about-photo reveal">
+        <img src="assets/img/founder.jpg" alt="Fondateur d'Helios, pilote télépiloté certifié" data-en-alt="Helios founder, certified drone pilot">
+      </div>
       <div class="about-text reveal">
-        <p class="eyebrow">Pourquoi Helios</p>
-        <h2>Une expertise pilotée avec rigueur</h2>
-        <p>Helios, c'est un pilotage télépiloté certifié, du matériel professionnel entretenu
+        <p class="eyebrow" data-en="Why Helios">Pourquoi Helios</p>
+        <h2 data-en="Expertise flown with rigor">Une expertise pilotée avec rigueur</h2>
+        <p data-en="Helios means certified drone piloting, professional equipment maintained with care, and an obsession with detail on every shot. Every mission is prepared: flight authorizations, location scouting, weather, shot planning.">Helios, c'est un pilotage télépiloté certifié, du matériel professionnel entretenu
           avec soin, et une obsession du détail à chaque prise de vue. Chaque mission est préparée :
           autorisations de vol, repérage, météo, plan de tournage.</p>
+        <p class="about-signature" data-en="Angel Tomas — Founder &amp; Drone Pilot">Angel Tomas — fondateur &amp; télépilote</p>
       </div>
-      <div class="stats reveal">
-        <div class="stat">
-          <span class="stat-num">100%</span>
-          <span class="stat-label">Vols déclarés &amp; assurés</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">4K</span>
-          <span class="stat-label">Résolution vidéo &amp; photo</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">24-48h</span>
-          <span class="stat-label">Délai de livraison rush</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">+3</span>
-          <span class="stat-label">Secteurs d'expertise</span>
-        </div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <span class="stat-num" data-count-to="100" data-suffix="%">0%</span>
+        <span class="stat-label" data-en="Flights declared &amp; insured">Vols déclarés &amp; assurés</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4K</span>
+        <span class="stat-label" data-en="Video &amp; photo resolution">Résolution vidéo &amp; photo</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">24-48h</span>
+        <span class="stat-label" data-en="Rush delivery time">Délai de livraison rush</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count-to="3" data-prefix="+">+0</span>
+        <span class="stat-label" data-en="Sectors of expertise">Secteurs d'expertise</span>
       </div>
     </div>
   </section>
@@ -172,23 +229,26 @@
   <section id="contact" class="section section-dark">
     <div class="contact-grid">
       <div class="contact-text reveal">
-        <p class="eyebrow">Discutons de votre projet</p>
-        <h2>Prêt à voir plus haut ?</h2>
-        <p>Décrivez-nous votre projet — bien immobilier, événement, chantier — et on revient vers
+        <p class="eyebrow" data-en="Let's talk about your project">Discutons de votre projet</p>
+        <h2 data-en="Ready to see higher?">Prêt à voir plus haut&nbsp;?</h2>
+        <p data-en="Tell us about your project — property, event, construction site — and we'll get back to you with a tailored proposal.">Décrivez-nous votre projet — bien immobilier, événement, chantier — et on revient vers
           vous avec une proposition adaptée.</p>
         <div class="contact-info">
-          <a href="mailto:ciavarella.angeltomas@gmail.com">ciavarella.angeltomas@gmail.com</a>
-          <a href="tel:+33619450257">06 19 45 02 57</a>
+          <a href="mailto:helios.internationalservices@gmail.com">helios.internationalservices@gmail.com</a>
+          <a href="tel:+33619450257">+33 (0)6 19 45 02 57</a>
         </div>
       </div>
       <form class="contact-form reveal" id="contact-form">
+        <input type="hidden" name="access_key" value="2c8ecf54-2ac2-48e6-8aa3-3c01c5222ea6">
+        <input type="hidden" name="subject" value="Nouvelle demande de contact — Site Helios">
+        <input type="hidden" name="from_name" value="Site Helios">
         <div class="form-row">
-          <input type="text" name="name" placeholder="Nom" required>
-          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="name" placeholder="Nom" data-en-placeholder="Name" required>
+          <input type="email" name="email" placeholder="Email" data-en-placeholder="Email" required>
         </div>
-        <input type="text" name="subject" placeholder="Type de projet (immobilier, événement...)">
-        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+        <input type="text" name="project_type" placeholder="Type de projet (immobilier, événement...)" data-en-placeholder="Project type (real estate, event...)">
+        <textarea name="message" rows="5" placeholder="Votre message" data-en-placeholder="Your message" required></textarea>
+        <button type="submit" class="btn btn-primary" data-en="Send request">Envoyer la demande</button>
         <p class="form-note" id="form-note"></p>
       </form>
     </div>
@@ -199,20 +259,80 @@
 <footer class="footer">
   <div class="footer-inner">
     <span class="logo">
-      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 3v6M20 31v6M3 20h6M31 20h6M8.5 8.5l4.2 4.2M27.3 27.3l4.2 4.2M8.5 31.5l4.2-4.2M27.3 12.7l4.2-4.2"/></g></svg>
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="1.3"/><path d="M14 12v16M26 12v16M14 20h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 20h-3M32 20h-3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
       HELIOS
     </span>
-    <p>&copy; <span id="year"></span> Helios. Tous droits réservés.</p>
+    <div class="footer-legal-group">
+      <p>&copy; <span id="year"></span> Helios. <span data-en="All rights reserved.">Tous droits réservés.</span></p>
+      <p class="footer-legal">SIRET 928 785 013 00014</p>
+    </div>
   </div>
 </footer>
 
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">&times;</button>
+  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer" data-en-aria="Close">&times;</button>
   <div class="lightbox-content">
-    <span class="gallery-placeholder">Vidéo à venir</span>
+    <span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span>
   </div>
 </div>
 
-<script src="js/main.js"></script>
+<div class="modal-overlay" id="quote-modal">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="quote-modal-close" aria-label="Fermer" data-en-aria="Close">&times;</button>
+    <p class="eyebrow" data-en="Quick request">Demande rapide</p>
+    <h3 data-en="Tell us about your project">Parlez-nous de votre projet</h3>
+    <p class="modal-sub" data-en="A couple of lines is enough — we'll get back to you fast, by email or WhatsApp.">Quelques lignes suffisent — on revient vers vous rapidement, par email ou WhatsApp.</p>
+    <form class="contact-form" id="quote-form">
+      <input type="hidden" name="access_key" value="2c8ecf54-2ac2-48e6-8aa3-3c01c5222ea6">
+      <input type="hidden" name="subject" value="Nouvelle demande de devis rapide — Site Helios">
+      <input type="hidden" name="from_name" value="Site Helios">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Nom" data-en-placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" data-en-placeholder="Email" required>
+      </div>
+      <textarea name="message" rows="3" placeholder="Votre projet en quelques mots : type, lieu, date..." data-en-placeholder="Your project in a few words: type, location, date..." required></textarea>
+      <button type="submit" class="btn btn-primary" data-en="Send">Envoyer</button>
+      <p class="form-note" id="quote-form-note"></p>
+    </form>
+    <a href="https://wa.me/33619450257" target="_blank" rel="noopener" class="modal-whatsapp-link" data-en="Or message us directly on WhatsApp">Ou écrivez-nous directement sur WhatsApp</a>
+  </div>
+</div>
+
+<a href="https://wa.me/33619450257" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Discuter sur WhatsApp" data-en-aria="Chat on WhatsApp">
+  <span class="whatsapp-fab-ring"></span>
+  <img src="assets/img/contact-avatar.jpg" alt="" class="whatsapp-fab-avatar">
+  <span class="whatsapp-fab-badge">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M23.5 8.5a10.6 10.6 0 0 0-16.7 12.7L5 28l7-1.8a10.6 10.6 0 0 0 15.9-9.2c0-2.8-1.1-5.5-3.1-7.5a10.6 10.6 0 0 0-1.3-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12.2 11.6c.3-.6.6-.6.9-.6h.7c.2 0 .5 0 .7.5s.9 2.1.9 2.3.1.4 0 .6a2 2 0 0 1-.4.6l-.5.6c-.2.2-.3.4-.1.7.2.3 1 1.5 2.1 2.4 1.4 1.2 2.1 1.4 2.4 1.6.3.2.5.1.6-.1l1-1.1c.2-.3.5-.2.7-.1l2 1c.2.1.4.2.4.4.1.6.1 1.2-.2 1.6-.3.5-1.5 1.2-2.7 1.2-1.2 0-2.7-.4-4.6-1.6-2.4-1.5-4-3.7-4.4-4.3-.4-.6-1.2-1.8-1.2-3.4 0-1.6.9-2.4 1.2-2.7z" fill="currentColor"/>
+    </svg>
+  </span>
+  <span class="whatsapp-fab-label" data-en="Chat on WhatsApp">Discuter sur WhatsApp</span>
+</a>
+
+<div class="chat-widget">
+  <button class="chat-fab" id="chat-toggle" aria-label="Questions sur nos tarifs" data-en-aria="Questions about our pricing">
+    <svg viewBox="0 0 24 24" fill="none" class="chat-fab-icon-open" aria-hidden="true">
+      <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4.4 3.3A.6.6 0 0 1 3.6 20V6a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <circle cx="8.5" cy="11" r="1.1" fill="currentColor"/>
+      <circle cx="12" cy="11" r="1.1" fill="currentColor"/>
+      <circle cx="15.5" cy="11" r="1.1" fill="currentColor"/>
+    </svg>
+    <svg viewBox="0 0 24 24" fill="none" class="chat-fab-icon-close" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-panel-header">
+      <span class="chat-panel-title" data-en="Helios Assistant — Pricing">Assistant Helios — Tarifs</span>
+      <span class="chat-panel-sub" data-en="Automated replies, not a human agent">Réponses automatiques, pas un humain</span>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-quick-replies" id="chat-quick-replies"></div>
+  </div>
+</div>
+
+<script src="js/main.js?v=4"></script>
 </body>
 </html>
