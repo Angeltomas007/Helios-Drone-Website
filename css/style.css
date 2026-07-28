@@ -18,6 +18,8 @@
   --on-photo-accent: #a3d6e8;
   --whatsapp: #25d366;
   --whatsapp-deep: #1da851;
+  --brass: #b8935a;
+  --brass-soft: rgba(184,147,90,0.4);
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   --radius: 14px;
   --ease: cubic-bezier(.16,.84,.44,1);
@@ -244,11 +246,23 @@ ul { list-style: none; margin: 0; padding: 0; }
   transition: transform .3s var(--ease), background .3s, border-color .3s, box-shadow .3s;
 }
 .btn-primary {
+  position: relative;
+  overflow: hidden;
   background: var(--accent-2);
   color: var(--white);
   box-shadow: 0 10px 26px -8px rgba(43,106,138,0.55);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(43,106,138,0.7); }
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left .7s ease;
+}
+.btn-primary:hover::after { left: 130%; }
 .btn-ghost {
   border: 1px solid var(--on-photo-line);
   color: var(--on-photo-text);
@@ -315,12 +329,25 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 .section-head { max-width: 640px; margin-bottom: 52px; }
 .eyebrow {
+  position: relative;
+  display: inline-block;
   font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--accent);
   margin-bottom: 14px;
+  padding-bottom: 12px;
   font-weight: 600;
 }
+.eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--brass);
+  transition: width .9s var(--ease) .25s;
+}
+.reveal.in-view .eyebrow::after { width: 34px; }
 .section-head h2, .about-text h2, .contact-text h2, .approach-block h2 {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4.6vw, 3.6rem);
@@ -410,6 +437,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .pricing-card-featured {
   background: var(--navy-deep);
   border-color: var(--on-photo-line);
+  border-top: 2px solid var(--brass);
 }
 .pricing-badge {
   position: absolute;
@@ -983,6 +1011,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  border-top: 2px solid var(--brass-soft);
+  border-bottom: 2px solid var(--brass-soft);
 }
 .section-feature-bg {
   position: absolute; inset: 0;
