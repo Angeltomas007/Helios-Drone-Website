@@ -65,69 +65,71 @@ langButtons.forEach((btn) => {
   btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
 });
 
-// Hero scroll-scrubbed frame sequence
-const heroSection = document.querySelector(".hero");
+// Hero scroll-scrubbed frame sequence (only present on the homepage)
 const heroCanvas = document.getElementById("hero-canvas");
-const heroCtx = heroCanvas.getContext("2d");
-const HERO_FRAME_COUNT = 72;
-const heroFrames = [];
-let heroFramesReady = false;
-let heroCurrentFrame = 0;
+if (heroCanvas) {
+  const heroSection = document.querySelector(".hero");
+  const heroCtx = heroCanvas.getContext("2d");
+  const HERO_FRAME_COUNT = 72;
+  const heroFrames = [];
+  let heroFramesReady = false;
+  let heroCurrentFrame = 0;
 
-// The yacht sits ~3% right of true center in the source footage; shift the
-// crop window to compensate so it reads as centered on any viewport ratio.
-const HERO_CENTER_OFFSET = 0.03;
+  // The yacht sits ~3% right of true center in the source footage; shift the
+  // crop window to compensate so it reads as centered on any viewport ratio.
+  const HERO_CENTER_OFFSET = 0.03;
 
-const drawHeroFrame = (index) => {
-  const img = heroFrames[index];
-  if (!img || !img.complete || !img.naturalWidth) return;
-  const cw = heroCanvas.width;
-  const ch = heroCanvas.height;
-  const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
-  const dw = img.naturalWidth * scale;
-  const dh = img.naturalHeight * scale;
-  const dx = (cw - dw) / 2 - dw * HERO_CENTER_OFFSET;
-  const dy = (ch - dh) / 2;
-  heroCtx.drawImage(img, dx, dy, dw, dh);
-};
+  const drawHeroFrame = (index) => {
+    const img = heroFrames[index];
+    if (!img || !img.complete || !img.naturalWidth) return;
+    const cw = heroCanvas.width;
+    const ch = heroCanvas.height;
+    const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+    const dw = img.naturalWidth * scale;
+    const dh = img.naturalHeight * scale;
+    const dx = (cw - dw) / 2 - dw * HERO_CENTER_OFFSET;
+    const dy = (ch - dh) / 2;
+    heroCtx.drawImage(img, dx, dy, dw, dh);
+  };
 
-const resizeHeroCanvas = () => {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  heroCanvas.width = heroCanvas.clientWidth * dpr;
-  heroCanvas.height = heroCanvas.clientHeight * dpr;
-  drawHeroFrame(heroCurrentFrame);
-};
+  const resizeHeroCanvas = () => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    heroCanvas.width = heroCanvas.clientWidth * dpr;
+    heroCanvas.height = heroCanvas.clientHeight * dpr;
+    drawHeroFrame(heroCurrentFrame);
+  };
 
-for (let i = 1; i <= HERO_FRAME_COUNT; i++) {
-  const img = new Image();
-  img.src = `assets/img/hero-frames/frame-${String(i).padStart(3, "0")}.jpg`;
-  heroFrames.push(img);
+  for (let i = 1; i <= HERO_FRAME_COUNT; i++) {
+    const img = new Image();
+    img.src = `assets/img/hero-frames/frame-${String(i).padStart(3, "0")}.jpg`;
+    heroFrames.push(img);
+  }
+  heroFrames[0].addEventListener("load", () => { resizeHeroCanvas(); });
+  Promise.all(
+    heroFrames.map((img) => img.complete ? Promise.resolve() : new Promise((res) => {
+      img.addEventListener("load", res);
+      img.addEventListener("error", res);
+    }))
+  ).then(() => { heroFramesReady = true; });
+
+  window.addEventListener("resize", resizeHeroCanvas);
+
+  let heroScrollTicking = false;
+  document.addEventListener("scroll", () => {
+    if (heroScrollTicking) return;
+    heroScrollTicking = true;
+    requestAnimationFrame(() => {
+      heroScrollTicking = false;
+      if (!heroFramesReady) return;
+      const progress = Math.min(Math.max(window.scrollY / heroSection.offsetHeight, 0), 1);
+      const frameIndex = Math.min(HERO_FRAME_COUNT - 1, Math.floor(progress * HERO_FRAME_COUNT));
+      if (frameIndex !== heroCurrentFrame) {
+        heroCurrentFrame = frameIndex;
+        drawHeroFrame(frameIndex);
+      }
+    });
+  }, { passive: true });
 }
-heroFrames[0].addEventListener("load", () => { resizeHeroCanvas(); });
-Promise.all(
-  heroFrames.map((img) => img.complete ? Promise.resolve() : new Promise((res) => {
-    img.addEventListener("load", res);
-    img.addEventListener("error", res);
-  }))
-).then(() => { heroFramesReady = true; });
-
-window.addEventListener("resize", resizeHeroCanvas);
-
-let heroScrollTicking = false;
-document.addEventListener("scroll", () => {
-  if (heroScrollTicking) return;
-  heroScrollTicking = true;
-  requestAnimationFrame(() => {
-    heroScrollTicking = false;
-    if (!heroFramesReady) return;
-    const progress = Math.min(Math.max(window.scrollY / heroSection.offsetHeight, 0), 1);
-    const frameIndex = Math.min(HERO_FRAME_COUNT - 1, Math.floor(progress * HERO_FRAME_COUNT));
-    if (frameIndex !== heroCurrentFrame) {
-      heroCurrentFrame = frameIndex;
-      drawHeroFrame(frameIndex);
-    }
-  });
-}, { passive: true });
 
 // Reveal on scroll
 const revealItems = document.querySelectorAll(".reveal");
@@ -157,37 +159,55 @@ lightbox.addEventListener("click", (e) => {
   if (e.target === lightbox) lightbox.classList.remove("open");
 });
 
-// Contact form (static placeholder submit — wire to a backend/service later)
-const form = document.getElementById("contact-form");
-const formNote = document.getElementById("form-note");
-const formSubmitBtn = form.querySelector("button[type=submit]");
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  formSubmitBtn.disabled = true;
-  formNote.textContent = currentLang === "en" ? "Sending…" : "Envoi en cours…";
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: new FormData(form),
+// Portfolio page category filters (only present on portfolio.html)
+const filterChips = document.querySelectorAll(".filter-chip");
+if (filterChips.length) {
+  const portfolioItems = document.querySelectorAll(".portfolio-gallery .gallery-item");
+  filterChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      filterChips.forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      const category = chip.dataset.filter;
+      portfolioItems.forEach((item) => {
+        item.style.display = (category === "all" || item.dataset.category === category) ? "" : "none";
+      });
     });
-    const result = await response.json();
-    if (result.success) {
+  });
+}
+
+// Contact form (only present on pages that include it)
+const form = document.getElementById("contact-form");
+if (form) {
+  const formNote = document.getElementById("form-note");
+  const formSubmitBtn = form.querySelector("button[type=submit]");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    formSubmitBtn.disabled = true;
+    formNote.textContent = currentLang === "en" ? "Sending…" : "Envoi en cours…";
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      const result = await response.json();
+      if (result.success) {
+        formNote.textContent = currentLang === "en"
+          ? "Thank you! Your request has been received — we'll get back to you shortly."
+          : "Merci ! Votre demande a bien été notée — nous revenons vers vous rapidement.";
+        form.reset();
+      } else {
+        throw new Error(result.message || "submit failed");
+      }
+    } catch (err) {
       formNote.textContent = currentLang === "en"
-        ? "Thank you! Your request has been received — we'll get back to you shortly."
-        : "Merci ! Votre demande a bien été notée — nous revenons vers vous rapidement.";
-      form.reset();
-    } else {
-      throw new Error(result.message || "submit failed");
+        ? "Something went wrong — please email us directly or try again."
+        : "Une erreur est survenue — écrivez-nous directement par email ou réessayez.";
+    } finally {
+      formSubmitBtn.disabled = false;
     }
-  } catch (err) {
-    formNote.textContent = currentLang === "en"
-      ? "Something went wrong — please email us directly or try again."
-      : "Une erreur est survenue — écrivez-nous directement par email ou réessayez.";
-  } finally {
-    formSubmitBtn.disabled = false;
-  }
-});
+  });
+}
 
 // Stat counters
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -373,6 +393,15 @@ const chatMessages = document.getElementById("chat-messages");
 const chatQuickReplies = document.getElementById("chat-quick-replies");
 let chatStarted = false;
 
+const goToContact = () => {
+  const contactSection = document.getElementById("contact");
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.location.href = "index.html#contact";
+  }
+};
+
 let wizardAnswers = {};
 
 const addChatBubble = (role, text) => {
@@ -422,7 +451,7 @@ const renderChatNode = (key, showUserLabel, userLabelOverride) => {
         if (opt.action === "scrollContact") {
           addChatBubble("user", opt.label);
           chatWidget.classList.remove("open");
-          document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+          goToContact();
           return;
         }
         wizardAnswers = {};
@@ -447,7 +476,7 @@ const renderChatNode = (key, showUserLabel, userLabelOverride) => {
       if (opt.action === "scrollContact") {
         addChatBubble("user", opt.label);
         chatWidget.classList.remove("open");
-        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+        goToContact();
         return;
       }
       renderChatNode(opt.next, true, opt.label);

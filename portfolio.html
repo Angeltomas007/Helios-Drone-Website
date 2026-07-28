@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Portfolio — Helios</title>
+<meta id="page-description" name="description" content="Helios : portfolio des prises de vue aériennes par secteur — immobilier, événementiel, inspection, cartographie.">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html#home" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 3v6M20 31v6M3 20h6M31 20h6M8.5 8.5l4.2 4.2M27.3 27.3l4.2 4.2M8.5 31.5l4.2-4.2M27.3 12.7l4.2-4.2"/></g></svg>
+      HELIOS
+    </a>
+    <button id="nav-toggle" aria-label="Ouvrir le menu" data-en-aria="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-links">
+      <li><a href="index.html#services" data-en="Services">Services</a></li>
+      <li><a href="index.html#tarifs" data-en="Pricing">Tarifs</a></li>
+      <li><a href="portfolio.html" data-en="Portfolio">Portfolio</a></li>
+      <li><a href="index.html#about" data-en="About">À propos</a></li>
+      <li><a href="index.html#contact" class="nav-cta" data-en="Contact">Contact</a></li>
+      <li class="lang-switch" role="group" aria-label="Choisir la langue / Choose language">
+        <button type="button" class="lang-btn active" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<header class="section section-dark portfolio-header">
+  <div class="section-head reveal">
+    <p class="eyebrow" data-en="Our work">Nos réalisations</p>
+    <h2 data-en="A glimpse from the sky">Un aperçu depuis le ciel</h2>
+    <p class="section-sub" data-en="The first shoots are currently underway — real footage is coming very soon. In the meantime, here's the style we're aiming for in each sector.">Les premières missions sont en cours de tournage — les vraies vidéos
+      arrivent très bientôt. En attendant, voici le style de rendu visé pour chaque secteur.</p>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="gallery-filters reveal">
+      <button type="button" class="filter-chip active" data-filter="all" data-en="All">Tous</button>
+      <button type="button" class="filter-chip" data-filter="immobilier" data-en="Real Estate">Immobilier</button>
+      <button type="button" class="filter-chip" data-filter="evenementiel" data-en="Events">Événementiel</button>
+      <button type="button" class="filter-chip" data-filter="inspection" data-en="Inspection">Inspection</button>
+      <button type="button" class="filter-chip" data-filter="cartographie" data-en="Mapping">Cartographie</button>
+      <button type="button" class="filter-chip" data-filter="yacht" data-en="Yacht">Yacht</button>
+    </div>
+
+    <div class="gallery portfolio-gallery">
+      <button class="gallery-item reveal" data-category="immobilier" style="background-image:url('https://images.pexels.com/photos/7937274/pexels-photo-7937274.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"><span class="gallery-tag" data-en="Real Estate">Immobilier</span><span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span></button>
+      <button class="gallery-item reveal" data-category="evenementiel" style="background-image:url('https://images.pexels.com/photos/3941291/pexels-photo-3941291.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"><span class="gallery-tag" data-en="Events">Événementiel</span><span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span></button>
+      <button class="gallery-item reveal" data-category="inspection" style="background-image:url('https://images.pexels.com/photos/8531889/pexels-photo-8531889.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"><span class="gallery-tag" data-en="Inspection">Inspection</span><span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span></button>
+      <button class="gallery-item reveal" data-category="cartographie" style="background-image:url('https://images.pexels.com/photos/3030296/pexels-photo-3030296.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"><span class="gallery-tag" data-en="Mapping">Cartographie</span><span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span></button>
+      <button class="gallery-item reveal" data-category="immobilier" style="background-image:url('https://images.pexels.com/photos/9716237/pexels-photo-9716237.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"><span class="gallery-tag" data-en="Real Estate">Immobilier</span><span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span></button>
+      <button class="gallery-item reveal" data-category="yacht" style="background-image:url('https://images.pexels.com/photos/9408818/pexels-photo-9408818.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200')"><span class="gallery-tag" data-en="Yacht">Yacht</span><span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span></button>
+    </div>
+  </section>
+
+  <section class="section-feature">
+    <div class="section-feature-bg" style="background-image:url('https://images.pexels.com/photos/6942523/pexels-photo-6942523.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920')"></div>
+    <div class="section-feature-overlay"></div>
+    <div class="section-feature-content reveal">
+      <h2 data-en="Every project deserves to be seen differently.">Chaque projet mérite d'être vu autrement.</h2>
+      <a href="index.html#contact" class="btn btn-primary" data-en="Discuss my project" style="margin-top:28px;">Discuter de mon projet</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 3v6M20 31v6M3 20h6M31 20h6M8.5 8.5l4.2 4.2M27.3 27.3l4.2 4.2M8.5 31.5l4.2-4.2M27.3 12.7l4.2-4.2"/></g></svg>
+      HELIOS
+    </span>
+    <p>&copy; <span id="year"></span> Helios. <span data-en="All rights reserved.">Tous droits réservés.</span></p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Fermer" data-en-aria="Close">&times;</button>
+  <div class="lightbox-content">
+    <span class="gallery-placeholder" data-en="Video coming soon">Vidéo à venir</span>
+  </div>
+</div>
+
+<a href="https://wa.me/33619450257" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Discuter sur WhatsApp" data-en-aria="Chat on WhatsApp">
+  <span class="whatsapp-fab-ring"></span>
+  <img src="assets/img/contact-avatar.jpg" alt="" class="whatsapp-fab-avatar">
+  <span class="whatsapp-fab-badge">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M23.5 8.5a10.6 10.6 0 0 0-16.7 12.7L5 28l7-1.8a10.6 10.6 0 0 0 15.9-9.2c0-2.8-1.1-5.5-3.1-7.5a10.6 10.6 0 0 0-1.3-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12.2 11.6c.3-.6.6-.6.9-.6h.7c.2 0 .5 0 .7.5s.9 2.1.9 2.3.1.4 0 .6a2 2 0 0 1-.4.6l-.5.6c-.2.2-.3.4-.1.7.2.3 1 1.5 2.1 2.4 1.4 1.2 2.1 1.4 2.4 1.6.3.2.5.1.6-.1l1-1.1c.2-.3.5-.2.7-.1l2 1c.2.1.4.2.4.4.1.6.1 1.2-.2 1.6-.3.5-1.5 1.2-2.7 1.2-1.2 0-2.7-.4-4.6-1.6-2.4-1.5-4-3.7-4.4-4.3-.4-.6-1.2-1.8-1.2-3.4 0-1.6.9-2.4 1.2-2.7z" fill="currentColor"/>
+    </svg>
+  </span>
+  <span class="whatsapp-fab-label" data-en="Chat on WhatsApp">Discuter sur WhatsApp</span>
+</a>
+
+<div class="chat-widget">
+  <button class="chat-fab" id="chat-toggle" aria-label="Questions sur nos tarifs" data-en-aria="Questions about our pricing">
+    <svg viewBox="0 0 24 24" fill="none" class="chat-fab-icon-open" aria-hidden="true">
+      <path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-4.4 3.3A.6.6 0 0 1 3.6 20V6a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <circle cx="8.5" cy="11" r="1.1" fill="currentColor"/>
+      <circle cx="12" cy="11" r="1.1" fill="currentColor"/>
+      <circle cx="15.5" cy="11" r="1.1" fill="currentColor"/>
+    </svg>
+    <svg viewBox="0 0 24 24" fill="none" class="chat-fab-icon-close" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-panel-header">
+      <span class="chat-panel-title" data-en="Helios Assistant — Pricing">Assistant Helios — Tarifs</span>
+      <span class="chat-panel-sub" data-en="Automated replies, not a human agent">Réponses automatiques, pas un humain</span>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-quick-replies" id="chat-quick-replies"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
