@@ -1107,24 +1107,6 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 /* Global cloud-transition wipe between sections */
-.sea-transition {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .35s linear;
-  background-image: url('https://images.pexels.com/photos/9408818/pexels-photo-9408818.jpeg?auto=compress&cs=tinysrgb&w=1920');
-  background-size: cover;
-  background-position: center;
-}
-.sea-transition::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(6,21,39,0.35), rgba(6,21,39,0.7));
-}
-
 /* Progressive word-reveal on scroll */
 .fade-reveal-text .fade-word {
   color: var(--ink-dim);

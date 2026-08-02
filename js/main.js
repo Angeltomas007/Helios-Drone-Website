@@ -193,34 +193,6 @@ if (document.querySelector(".fade-reveal-text")) {
   updateFadeReveal();
 }
 
-// Sea-transition wash as the hero hands off to the next section (once, not repeated)
-const seaTransition = document.getElementById("sea-transition");
-const heroSectionEl = document.querySelector(".hero");
-if (seaTransition && heroSectionEl) {
-  const updateSeaTransition = () => {
-    const rect = heroSectionEl.getBoundingClientRect();
-    const vh = window.innerHeight;
-    // 0 while the hero is still fully in view, rises as it exits, settles back to 0
-    // once the next section has had a moment to breathe
-    const start = vh * 0.4;
-    const end = -vh * 0.5;
-    const progress = Math.min(Math.max((start - rect.bottom) / (start - end), 0), 1);
-    const opacity = Math.sin(progress * Math.PI) * 0.75;
-    seaTransition.style.opacity = String(Math.max(0, opacity));
-  };
-  let seaTicking = false;
-  document.addEventListener("scroll", () => {
-    if (seaTicking) return;
-    seaTicking = true;
-    requestAnimationFrame(() => {
-      seaTicking = false;
-      updateSeaTransition();
-    });
-  }, { passive: true });
-  window.addEventListener("resize", updateSeaTransition);
-  updateSeaTransition();
-}
-
 // Reveal on scroll
 const revealItems = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver(
