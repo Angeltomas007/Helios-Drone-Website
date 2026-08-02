@@ -223,42 +223,32 @@ if (document.querySelector(".fade-reveal-text")) {
   updateFadeReveal();
 }
 
-// Global cloud-transition wipe between major sections
-const cloudTransition = document.getElementById("cloud-transition");
-if (cloudTransition) {
-  const blocks = Array.from(document.querySelectorAll("header, main > section"));
-  const boundaries = blocks.slice(1); // skip the very top of the page — nothing to wipe from before it
-  const updateCloudTransition = () => {
+// Sea-transition wash as the hero hands off to the next section (once, not repeated)
+const seaTransition = document.getElementById("sea-transition");
+const heroSectionEl = document.querySelector(".hero");
+if (seaTransition && heroSectionEl) {
+  const updateSeaTransition = () => {
+    const rect = heroSectionEl.getBoundingClientRect();
     const vh = window.innerHeight;
-    let maxOpacity = 0;
-    boundaries.forEach((el) => {
-      const top = el.getBoundingClientRect().top;
-      let o;
-      if (top >= vh) {
-        // section hasn't started entering yet — no clouds
-        o = 0;
-      } else if (top >= vh * 0.3) {
-        // entering: clouds build as it rises into view
-        o = (vh - top) / (vh * 0.7);
-      } else {
-        // past its peak: clouds clear as it settles into place
-        o = Math.max(0, (top + vh * 0.5) / (vh * 0.8));
-      }
-      if (o > maxOpacity) maxOpacity = o;
-    });
-    cloudTransition.style.opacity = String(maxOpacity);
+    // 0 while the hero is still fully in view, rises as it exits, settles back to 0
+    // once the next section has had a moment to breathe
+    const start = vh * 0.4;
+    const end = -vh * 0.5;
+    const progress = Math.min(Math.max((start - rect.bottom) / (start - end), 0), 1);
+    const opacity = Math.sin(progress * Math.PI) * 0.75;
+    seaTransition.style.opacity = String(Math.max(0, opacity));
   };
-  let cloudTicking = false;
+  let seaTicking = false;
   document.addEventListener("scroll", () => {
-    if (cloudTicking) return;
-    cloudTicking = true;
+    if (seaTicking) return;
+    seaTicking = true;
     requestAnimationFrame(() => {
-      cloudTicking = false;
-      updateCloudTransition();
+      seaTicking = false;
+      updateSeaTransition();
     });
   }, { passive: true });
-  window.addEventListener("resize", updateCloudTransition);
-  updateCloudTransition();
+  window.addEventListener("resize", updateSeaTransition);
+  updateSeaTransition();
 }
 
 // Reveal on scroll
