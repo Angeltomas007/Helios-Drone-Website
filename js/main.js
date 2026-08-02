@@ -67,6 +67,7 @@ const applyLanguage = (lang) => {
   langButtons.forEach((btn) => btn.classList.toggle("active", btn.dataset.lang === lang));
   localStorage.setItem("helios-lang", lang);
   if (typeof resetChatLanguage === "function") resetChatLanguage();
+  if (typeof refreshFadeReveal === "function") refreshFadeReveal();
 };
 
 langButtons.forEach((btn) => {
@@ -180,6 +181,46 @@ if (customCursor) {
   } else {
     customCursor.remove();
   }
+}
+
+// Progressive word-reveal on scroll (fade-reveal-text)
+function wrapFadeWords() {
+  document.querySelectorAll(".fade-reveal-text").forEach((el) => {
+    const words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map((w) => `<span class="fade-word">${w}</span>`).join(" ");
+  });
+}
+function updateFadeReveal() {
+  const vh = window.innerHeight;
+  const start = vh * 0.85;
+  const end = vh * 0.35;
+  document.querySelectorAll(".fade-reveal-text").forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const total = rect.height + (start - end);
+    const traveled = start - rect.top;
+    const progress = Math.min(Math.max(traveled / total, 0), 1);
+    const words = el.querySelectorAll(".fade-word");
+    const revealCount = Math.round(progress * words.length);
+    words.forEach((w, i) => w.classList.toggle("active", i < revealCount));
+  });
+}
+function refreshFadeReveal() {
+  wrapFadeWords();
+  updateFadeReveal();
+}
+if (document.querySelector(".fade-reveal-text")) {
+  wrapFadeWords();
+  let fadeTicking = false;
+  document.addEventListener("scroll", () => {
+    if (fadeTicking) return;
+    fadeTicking = true;
+    requestAnimationFrame(() => {
+      fadeTicking = false;
+      updateFadeReveal();
+    });
+  }, { passive: true });
+  window.addEventListener("resize", updateFadeReveal);
+  updateFadeReveal();
 }
 
 // Reveal on scroll
