@@ -1103,20 +1103,22 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 /* Global cloud-transition wipe between sections */
-.cloud-transition {
+.sea-transition {
   position: fixed;
-  inset: -15%;
+  inset: 0;
   z-index: 60;
   pointer-events: none;
   opacity: 0;
-  background:
-    radial-gradient(42% 38% at 18% 28%, rgba(255,255,255,0.97), transparent 62%),
-    radial-gradient(50% 42% at 78% 18%, rgba(255,255,255,0.95), transparent 65%),
-    radial-gradient(48% 44% at 48% 68%, rgba(255,255,255,0.96), transparent 60%),
-    radial-gradient(38% 36% at 88% 78%, rgba(255,255,255,0.92), transparent 60%),
-    radial-gradient(40% 34% at 8% 82%, rgba(255,255,255,0.92), transparent 60%),
-    #fff;
-  filter: blur(24px);
+  transition: opacity .35s linear;
+  background-image: url('https://images.pexels.com/photos/9408818/pexels-photo-9408818.jpeg?auto=compress&cs=tinysrgb&w=1920');
+  background-size: cover;
+  background-position: center;
+}
+.sea-transition::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6,21,39,0.35), rgba(6,21,39,0.7));
 }
 
 /* Custom cursor (desktop only) */
