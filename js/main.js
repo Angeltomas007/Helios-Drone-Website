@@ -223,17 +223,22 @@ if (document.querySelector(".fade-reveal-text")) {
   updateFadeReveal();
 }
 
-// Cloud-parting reveal on scroll (full-bleed feature section)
-const cloudLayer = document.querySelector(".section-feature-clouds");
-if (cloudLayer) {
-  const cloudSection = cloudLayer.closest(".section-feature");
-  const updateCloudReveal = () => {
-    const rect = cloudSection.getBoundingClientRect();
+// Global cloud-transition wipe between major sections
+const cloudTransition = document.getElementById("cloud-transition");
+if (cloudTransition) {
+  const blocks = Array.from(document.querySelectorAll("header, main > section"));
+  const boundaries = blocks.slice(1); // skip the very top of the page — nothing to wipe from before it
+  const updateCloudTransition = () => {
     const vh = window.innerHeight;
-    const start = vh;
-    const end = vh * 0.15;
-    const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
-    cloudLayer.style.opacity = String(1 - progress);
+    const center = vh * 0.5;
+    const spread = vh * 0.6;
+    let maxOpacity = 0;
+    boundaries.forEach((el) => {
+      const dist = Math.abs(el.getBoundingClientRect().top - center);
+      const o = Math.max(0, 1 - dist / spread);
+      if (o > maxOpacity) maxOpacity = o;
+    });
+    cloudTransition.style.opacity = String(maxOpacity);
   };
   let cloudTicking = false;
   document.addEventListener("scroll", () => {
@@ -241,11 +246,11 @@ if (cloudLayer) {
     cloudTicking = true;
     requestAnimationFrame(() => {
       cloudTicking = false;
-      updateCloudReveal();
+      updateCloudTransition();
     });
   }, { passive: true });
-  window.addEventListener("resize", updateCloudReveal);
-  updateCloudReveal();
+  window.addEventListener("resize", updateCloudTransition);
+  updateCloudTransition();
 }
 
 // Reveal on scroll
