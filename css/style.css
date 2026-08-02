@@ -20,6 +20,8 @@
   --whatsapp-deep: #1da851;
   --brass: #b8935a;
   --brass-soft: rgba(184,147,90,0.4);
+  --ink-dim: rgba(29,29,31,0.22);
+  --on-photo-dim: rgba(255,255,255,0.28);
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   --radius: 14px;
   --ease: cubic-bezier(.16,.84,.44,1);
@@ -1125,3 +1127,12 @@ ul { list-style: none; margin: 0; padding: 0; }
     cursor: none;
   }
 }
+
+/* Progressive word-reveal on scroll */
+.fade-reveal-text .fade-word {
+  color: var(--ink-dim);
+  transition: color .25s linear;
+}
+.fade-reveal-text .fade-word.active { color: var(--ink-muted); }
+.section-dark .fade-reveal-text .fade-word { color: var(--on-photo-dim); }
+.section-dark .fade-reveal-text .fade-word.active { color: var(--on-photo-muted); }
