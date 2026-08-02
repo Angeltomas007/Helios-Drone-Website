@@ -623,3 +623,29 @@ if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
 }
 
 applyLanguage(currentLang);
+
+// Parallax drift on full-bleed feature photos
+const featureBgs = document.querySelectorAll(".section-feature-bg");
+if (featureBgs.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const updateFeatureParallax = () => {
+    featureBgs.forEach((bg) => {
+      const section = bg.parentElement;
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = Math.min(Math.max((vh - rect.top) / (vh + rect.height), 0), 1);
+      const offset = (progress - 0.5) * Math.min(rect.height * 0.22, 140);
+      bg.style.transform = `translateY(${offset}px)`;
+    });
+  };
+  let featureTicking = false;
+  document.addEventListener("scroll", () => {
+    if (featureTicking) return;
+    featureTicking = true;
+    requestAnimationFrame(() => {
+      featureTicking = false;
+      updateFeatureParallax();
+    });
+  }, { passive: true });
+  window.addEventListener("resize", updateFeatureParallax);
+  updateFeatureParallax();
+}

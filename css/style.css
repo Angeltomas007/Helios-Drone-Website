@@ -1033,10 +1033,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   border-bottom: 2px solid var(--brass-soft);
 }
 .section-feature-bg {
-  position: absolute; inset: 0;
+  position: absolute;
+  top: -12%; left: 0; right: 0;
+  height: 124%;
   background-size: cover;
   background-position: center;
-  transform: scale(1.04);
+  will-change: transform;
 }
 .section-feature-overlay {
   position: absolute; inset: 0;
