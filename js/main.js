@@ -287,9 +287,14 @@ if (quoteModal) {
   const quoteModalClose = document.getElementById("quote-modal-close");
   const quoteForm = document.getElementById("quote-form");
 
-  const openQuoteModal = () => {
+  const openQuoteModal = (packageName) => {
     quoteModal.classList.add("open");
     document.body.style.overflow = "hidden";
+    if (packageName) {
+      const messageField = quoteForm.querySelector("textarea[name=message]");
+      const prefix = currentLang === "en" ? `Interested in: ${packageName}. ` : `Intéressé par : ${packageName}. `;
+      if (messageField && !messageField.value) messageField.value = prefix;
+    }
   };
   const closeQuoteModal = () => {
     quoteModal.classList.remove("open");
@@ -299,6 +304,9 @@ if (quoteModal) {
   quoteCta.addEventListener("click", (e) => {
     e.preventDefault();
     openQuoteModal();
+  });
+  document.querySelectorAll(".pricing-cta").forEach((btn) => {
+    btn.addEventListener("click", () => openQuoteModal(btn.dataset.package));
   });
   quoteModalClose.addEventListener("click", closeQuoteModal);
   quoteModal.addEventListener("click", (e) => {
