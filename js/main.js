@@ -30,10 +30,14 @@ onScroll();
 
 // Mobile nav toggle
 navToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
+  const isOpen = navLinks.classList.toggle("open");
+  navToggle.classList.toggle("open", isOpen);
 });
 navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => navLinks.classList.remove("open"));
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    navToggle.classList.remove("open");
+  });
 });
 
 // i18n (FR default, EN via data-en / data-en-aria / data-en-placeholder / data-en-alt)
