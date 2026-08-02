@@ -223,6 +223,31 @@ if (document.querySelector(".fade-reveal-text")) {
   updateFadeReveal();
 }
 
+// Cloud-parting reveal on scroll (full-bleed feature section)
+const cloudLayer = document.querySelector(".section-feature-clouds");
+if (cloudLayer) {
+  const cloudSection = cloudLayer.closest(".section-feature");
+  const updateCloudReveal = () => {
+    const rect = cloudSection.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const start = vh;
+    const end = vh * 0.15;
+    const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+    cloudLayer.style.opacity = String(1 - progress);
+  };
+  let cloudTicking = false;
+  document.addEventListener("scroll", () => {
+    if (cloudTicking) return;
+    cloudTicking = true;
+    requestAnimationFrame(() => {
+      cloudTicking = false;
+      updateCloudReveal();
+    });
+  }, { passive: true });
+  window.addEventListener("resize", updateCloudReveal);
+  updateCloudReveal();
+}
+
 // Reveal on scroll
 const revealItems = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver(
