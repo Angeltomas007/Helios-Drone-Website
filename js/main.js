@@ -230,12 +230,20 @@ if (cloudTransition) {
   const boundaries = blocks.slice(1); // skip the very top of the page — nothing to wipe from before it
   const updateCloudTransition = () => {
     const vh = window.innerHeight;
-    const center = vh * 0.5;
-    const spread = vh * 0.6;
     let maxOpacity = 0;
     boundaries.forEach((el) => {
-      const dist = Math.abs(el.getBoundingClientRect().top - center);
-      const o = Math.max(0, 1 - dist / spread);
+      const top = el.getBoundingClientRect().top;
+      let o;
+      if (top >= vh) {
+        // section hasn't started entering yet — no clouds
+        o = 0;
+      } else if (top >= vh * 0.3) {
+        // entering: clouds build as it rises into view
+        o = (vh - top) / (vh * 0.7);
+      } else {
+        // past its peak: clouds clear as it settles into place
+        o = Math.max(0, (top + vh * 0.5) / (vh * 0.8));
+      }
       if (o > maxOpacity) maxOpacity = o;
     });
     cloudTransition.style.opacity = String(maxOpacity);
